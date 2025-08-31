@@ -1,0 +1,493 @@
+/* Общие стили админ-панели */
+.admin-section {
+  padding: 20px;
+  color: #333;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.admin-header h2 {
+  margin: 0;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.admin-table-container {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.admin-table {
+  table-layout: fixed;
+  width: 100%;
+  word-wrap: break-word;
+  border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: top;
+  
+}
+
+.admin-table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #000000;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.admin-table td {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #555;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+/* Кнопки */
+.action-buttons {
+  display: flex;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  min-width: 70px;
+}
+
+.btn-primary {
+  background-color: #3498db;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #2980b9;
+  transform: translateY(-1px);
+}
+
+.btn-edit {
+  background-color: #3498db;
+  color: white;
+}
+
+.btn-edit:hover {
+  background-color: #2980b9;
+  transform: translateY(-1px);
+}
+
+.btn-delete {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #c0392b;
+  transform: translateY(-1px);
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #95a5a6;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.btn-close:hover {
+  color: #7f8c8d;
+  background: #f0f0f0;
+}
+
+/* Состояния */
+.no-data {
+  text-align: center;
+  color: #95a5a6;
+  padding: 30px;
+  font-style: italic;
+}
+
+
+/* Модальные окна */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal {
+  background: white;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e8e8e8;
+  background: #f8f9fa;
+}
+
+.modal-title {
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0;
+}
+
+/* Формы */
+.admin-form {
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #555;
+  font-size: 13px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+  font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #f0f0f0;
+}
+
+/* Специфичные стили для тренеров */
+.coach-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  min-width: 250px;
+}
+
+.coach-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.coach-name {
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.coach-specialization {
+  color: #666;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.specialization-cell {
+  max-width: 300px;
+  min-width: 200px;
+}
+
+.current-photo,
+.image-preview {
+  margin-top: 8px;
+  padding: 8px;
+  background: #f8f9fa;
+  border-radius: 4px;
+}
+
+.current-photo-label,
+.preview-label {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.current-photo-thumb,
+.preview-thumb {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+/* Специфичные стили для новостей */
+.news-title {
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 4px;
+  line-height: 1.3;
+  max-width: 200px;
+}
+
+.news-description,
+.news-extra {
+  color: #666;
+  line-height: 1.4;
+  max-width: 300px;
+}
+
+.news-promo {
+  font-weight: 500;
+  color: #3498db;
+}
+
+/* Специфичные стили для тарифов */
+.tariff-name {
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 4px;
+  line-height: 1.3;
+  max-width: 250px;
+}
+
+.tariff-price {
+  font-weight: 600;
+  color: #27ae60;
+}
+.category-title,
+.type-title{
+  padding: 13px;
+  color: #333;
+}
+
+/* Стили для формы добавления тарифа */
+.modal .admin-form {
+  padding: 24px;
+}
+
+.modal .form-group {
+  margin-bottom: 20px;
+}
+
+.modal .form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 14px;
+}
+
+.modal .form-group select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: inherit;
+  box-sizing: border-box;
+  background-color: white;
+  cursor: pointer;
+  appearance: none;
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+}
+
+.modal .form-group select:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
+}
+
+/* Стили для обязательных полей */
+.modal .form-group label[required]::after {
+  content: " *";
+  color: #e74c3c;
+}
+
+/* Стили для выпадающего списка длительности */
+.modal .form-group select#duration {
+  color: #666;
+}
+
+.modal .form-group select#duration option[value=""] {
+  color: #999;
+  font-style: italic;
+}
+
+.modal .form-group select#duration option:not([value=""]) {
+  color: #333;
+}
+
+.category-section{
+  display: flex;
+  flex-direction: row;
+}
+.type-section{
+  width: 100%;
+}
+/* Общие стили для строк таблицы */
+.table-row {
+  transition: background-color 0.2s ease;
+}
+
+.table-row:hover {
+  background-color: #f8f9fa;
+}
+
+/* Дополнительные стили для галереи */
+.admin-gallery .coach-selector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-gallery .coach-selector label {
+  font-weight: bold;
+  margin-bottom: 0;
+  color: #2c3e50;
+}
+
+.admin-gallery .gallery-info {
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #f5f5f5;
+  border-radius: 5px;
+  color: #2c3e50;
+}
+
+.form-select {
+    padding: 12px 45px 12px 15px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    color: #2c3e50;
+    appearance: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+
+/* Стили для опций */
+.form-select option {
+    padding: 10px;
+    font-size: 0.95rem;
+}
+
+
+
+.gallery-thumb {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.caption-cell {
+  max-width: 200px;
+  word-wrap: break-word;
+}
+
+.order-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-order {
+  padding: 2px 6px;
+  font-size: 12px;
+  min-width: 30px;
+}
+
+.order-number {
+  font-weight: bold;
+  min-width: 20px;
+  text-align: center;
+}
+
+.current-image,
+.image-preview {
+  margin-top: 10px;
+}
+
+.current-image p,
+.image-preview p {
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #666;
+}
+
+.preview-thumb {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}

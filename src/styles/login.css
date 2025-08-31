@@ -1,0 +1,242 @@
+/* Анимации */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Основной контейнер */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Форма входа */
+.login-form {
+  background: rgba(34, 34, 34, 0.85);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  animation: slideUp 0.5s ease;
+}
+
+.login-form:focus-within {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 24px;
+}
+
+/* Группы форм */
+.form-group {
+  margin-bottom: 20px;
+  animation: fadeIn 0.6s ease;
+}
+
+/* Метки */
+.form-group label,
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+/* Поля ввода */
+.form-control {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #444;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: #333;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.form-control::placeholder {
+  color: #95a5a6;
+  opacity: 1;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #3498db;
+  background-color: #222;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.form-control:disabled {
+  background-color: #2a2a2a;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Пароль */
+.password-container {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #95a5a6;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.toggle-password:hover {
+  color: #3498db;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.toggle-password svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Кнопка входа */
+.btn-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: #BD9743;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  box-sizing: border-box;
+}
+
+.btn-login:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(189, 151, 67, 0.4);
+}
+
+/* Ключевое исправление - добавляем состояние активного нажатия */
+.btn-login:active:not(:disabled) {
+  transform: translateY(1px) !important;
+  box-shadow: 0 3px 12px rgba(189, 151, 67, 0.3) !important;
+  /* Убираем возможные "подпрыгивания" */
+  transition-duration: 0.1s;
+}
+
+.btn-login:disabled {
+  background: #bdc3c7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Спиннер */
+.spinner-border-sm {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* Оповещения */
+.alert {
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Ошибки */
+.form-control.input-error {
+  border-color: #e74c3c;
+  background-color: #2d2222;
+}
+
+.error-text {
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: 4px;
+  font-weight: 500;
+  display: block;
+}
+
+/* Адаптивность */
+@media (max-width: 425px) {
+  .login-form {
+    padding: 30px 20px;
+    margin: 0;
+  }
+  
+  .login-form h2 {
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
+  
+  .form-control {
+    padding: 14px;
+    font-size: 16px;
+  }
+
+   .btn-login {
+    padding: 14px !important;
+  }
+}

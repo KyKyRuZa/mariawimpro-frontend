@@ -1,0 +1,129 @@
+.welcome-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 20px;
+}
+
+.slogan {
+    width: 100%;
+    max-width: 976px;
+    margin: 100px 0px 40px 0px;
+}
+
+.title {
+    font-weight: bolder;
+    font-size: 36px;
+    text-align: center;
+    line-height: 1.4;
+    padding: 0 10px;
+}
+
+.title span {
+    display: block;
+}
+
+.title span:first-child {
+    text-align: left;
+}
+
+.title span:last-child {
+    text-align: right;
+}
+
+.subtitle {
+    font-size: 18px;
+    text-align: center;
+    font-weight: 600;
+    padding: 0 10px;
+    margin-top: 20px;
+}
+
+.welcome-btn {
+    background: #BD9743;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    padding: 16px 32px;
+    margin-bottom: 200px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.welcome-btn:hover {
+    opacity: 0.8;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (min-width: 768px) {
+    .welcome-container {
+        margin: 0px;
+    }
+    .slogan {
+        margin: 150px 0px 40px 0px;
+    }
+    
+    .title {
+        font-size: 48px;
+    }
+    
+    .subtitle {
+        font-size: 24px;
+    }
+    
+    .welcome-btn {
+        font-size: 18px;
+        padding: 18px 38px;
+        margin-bottom: 280px;
+    }
+}
+
+@media (min-width: 1024px) {
+    
+    .slogan {
+        margin: 200px 0px 40px 0px;
+        width: 976px;
+    }
+    
+    .title {
+        font-size: 64px;
+        padding: 0;
+    }
+    
+    .subtitle {
+        font-size: 32px;
+        padding: 0;
+    }
+    
+    .welcome-btn {
+        font-size: 20px;
+        padding: 20px 44px;
+        margin-bottom: 356px;
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-container {
+        margin: 0;
+    }
+    .slogan {
+        margin: 80px 0px 30px 0px;
+    }
+    
+    .title {
+        font-size: 25px;
+    }
+    
+    .subtitle {
+        font-size: 15px;
+        margin-top: 15px;
+    }
+    
+    .welcome-btn {
+        padding: 14px 28px;
+        margin-bottom: 150px;
+    }
+}

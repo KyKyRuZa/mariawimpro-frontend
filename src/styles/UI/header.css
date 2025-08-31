@@ -1,0 +1,203 @@
+.header {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  color: white;
+  height: 175px;
+  padding: 40px 0;
+  position: sticky !important;
+  top: 0;
+  z-index: 1000;
+  transition: height 0.3s ease;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 100%;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.header-logo .logo {
+  width: 94px;
+  height: 94px;
+}
+
+.header-logo div {
+  margin: 0;
+  font-size: 27px;
+  font-weight: 500;
+  color: white;
+  line-height: 39px;
+}
+
+.header-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 48px;
+}
+
+.header-nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 22px;
+  transition: color 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.header-nav a.active {
+  opacity: 1;
+}
+
+.header-phone {
+  color: white;
+  font-size: 22px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.header-nav a:hover,
+.header-phone:hover {
+  opacity: 0.8;
+}
+
+/* Бургер-меню */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 1001;
+  width: 36px;
+  height: 36px;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle span {
+  transition: all 0.3s ease;
+    background-color: white;
+    display: block;
+    height: 3px;
+    margin: 5px auto;
+    width: 25px;
+}
+
+
+@media (max-width: 1024px) {
+  .header {
+    height: 120px;
+    padding: 20px 0;
+  }
+
+  .header-logo .logo {
+    width: 60px;
+    height: 60px;
+  }
+
+  .header-logo div {
+    font-size: 16px;
+    line-height: 28px;
+  }
+
+  .header-nav a,
+  .header-phone {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .header-phone {
+    display: none;
+  }
+
+  .header-nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 320px;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 140px 20px 40px;
+    z-index: 999;
+    overflow-y: auto;
+  }
+
+  .header-nav.active {
+    display: block;
+    right: 0;
+  }
+
+  .header-nav ul {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 0;
+    margin: 0;
+  }
+
+  .header-nav a {
+    font-size: 20px;
+    display: block;
+    padding: 8px 0;
+  }
+
+  /* Анимация бургера */
+  .menu-toggle.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg) ;
+    background-color: white;
+  }
+
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg) ;
+    background-color: white;
+  }
+
+  /* Запрет скролла при открытом меню */
+  body.menu-open {
+    overflow: hidden;
+
+  }
+}
+
+@media (max-width: 480px) {
+  .header-container {
+    padding: 0 16px;
+  }
+
+  .header-logo div {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .header-nav {
+    width: 90%;
+    max-width: 300px;
+  }
+}
