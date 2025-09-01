@@ -83,7 +83,7 @@ const CoachInfoPage = () => {
                     ←
                 </button>
                     <img 
-                        src={`http://localhost:3001/uploads/${coach.photo}`}
+                        src={`http://mariaswimpro.ru/assets/${coach.photo}`}
                         alt={coach.fullName} 
                         className="coach-avatar" 
                     />
@@ -118,7 +118,7 @@ const CoachInfoPage = () => {
                                     onClick={() => openPhoto(photo)}
                                 >
                                     <img
-                                        src={photo.fullPhotoUrl || `http://localhost:3001/uploads/${photo.photoUrl}`}
+                                        src={photo.fullPhotoUrl || `http://mariaswimpro.ru/assets/${photo.photoUrl}`}
                                         alt={photo.caption || `Фото ${coach.fullName}`}
                                         className="gallery-image"
                                         data-ratio="auto"
@@ -147,7 +147,7 @@ const CoachInfoPage = () => {
                             ×
                         </button>
                         <img
-                            src={selectedPhoto.fullPhotoUrl || `http://localhost:3001/uploads/${selectedPhoto.photoUrl}`}
+                            src={selectedPhoto.fullPhotoUrl || `http://mariaswimpro.ru/assets/${selectedPhoto.photoUrl}`}
                             alt={selectedPhoto.caption || `Фото ${coach.fullName}`}
                             className="overlay-image"
                         />

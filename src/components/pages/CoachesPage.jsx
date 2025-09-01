@@ -35,9 +35,9 @@ const CoachesPage = () => {
                 {coaches.map(coach => (
                     <CoachesCard
                         key={coach.id}
-                        coachId={coach.id} // передаем ID тренера
+                        coachId={coach.id}
                         text={coach.fullName}
-                        image={`http://localhost:3001/uploads/${coach.photo}`}
+                        image={`http://mariaswimpro.ru/assets/${coach.photo}`}
                         alt={coach.fullName}
                     />
                 ))}
