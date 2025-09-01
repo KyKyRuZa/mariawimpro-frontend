@@ -8,7 +8,7 @@ const BotWidget = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   const openBot = () => {
-    window.open('https://t.me/your_bot_username', '_blank');
+    window.open('https://t.me/mariaswimpro_bot', '_blank');
   };
   useEffect(() => {
     const timer = setTimeout(() => {

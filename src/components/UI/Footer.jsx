@@ -26,10 +26,10 @@ const Footer = () => {
             </div>
           </div>
           <div className="footer-social">
-            <a href="#" target="_blank" rel="noopener noreferrer">
+            <a href="https://vk.com/mariaswimpro" target="_blank" rel="noopener noreferrer">
               <FontAwesomeIcon icon={faVk} size="2x" color="white" />
             </a>
-            <a href="#" target="_blank" rel="noopener noreferrer">
+            <a href="https://t.me/swimthings" target="_blank" rel="noopener noreferrer">
               <FontAwesomeIcon icon={faTelegram} size="2x" color="white" />
             </a>
           </div>
