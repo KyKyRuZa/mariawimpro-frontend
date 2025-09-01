@@ -4,10 +4,8 @@ Allow: /
 # Директивы для поисковых систем
 Crawl-delay: 1
 
-# Запрет сканирования служебных путей
 Disallow: /src/
 Disallow: /node_modules/
-Disallow: /dist/
 Disallow: /*.json$
 Disallow: /*.js$
 Disallow: /*.css$
