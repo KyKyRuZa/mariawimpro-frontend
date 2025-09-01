@@ -1,9 +1,6 @@
 User-agent: *
 Allow: /
 
-# Sitemap (укажите ваш домен после деплоя)
-Sitemap: https://yourdomain.com/sitemap.xml
-
 # Директивы для поисковых систем
 Crawl-delay: 1
 
