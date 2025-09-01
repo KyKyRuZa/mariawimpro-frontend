@@ -1,21 +1,14 @@
 User-agent: *
-Allow: /
-
-# Директивы для поисковых систем
-Crawl-delay: 1
-
-Disallow: /src/
+Disallow: /admin/
+Disallow: /config/
 Disallow: /node_modules/
-Disallow: /*.json$
-Disallow: /*.js$
-Disallow: /*.css$
+Disallow: /*.env
+Disallow: /*.json
+Disallow: /*.log
 
-# Разрешение для важных ресурсов
-Allow: /*.css$
-Allow: /*.js$
-Allow: /*.png$
-Allow: /*.jpg$
-Allow: /*.jpeg$
-Allow: /*.gif$
-Allow: /*.svg$
-Allow: /*.ico$
+Allow: /assets/
+Allow: /images/
+Allow: /css/
+Allow: /js/
+
+Crawl-delay: 5
