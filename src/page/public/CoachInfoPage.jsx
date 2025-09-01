@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import Header from "../../components/UI/Header";
 import Footer from "../../components/UI/Footer";
 import '../../styles/coach-info.css';
@@ -67,16 +69,14 @@ const CoachInfoPage = () => {
         <>
             <Header />
             <div className="coach-info-container">
-                
-
                 <div className="coach-header">
-                <button 
-                    onClick={() => navigate(-1)}
-                    className="back-button"
-                    aria-label="Назад"
-                >
-                    ←
-                </button>
+                    <button 
+                        onClick={() => navigate(-1)}
+                        className="back-button"
+                        aria-label="Назад"
+                    >
+                        <FontAwesomeIcon icon={faArrowLeft} />
+                    </button>
                     <img 
                         src={`https://mariaswimpro.ru/assets/${coach.photo}`}
                         alt={coach.fullName} 

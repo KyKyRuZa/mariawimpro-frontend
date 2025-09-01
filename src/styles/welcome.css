@@ -58,29 +58,6 @@
 }
 
 /* Медиа-запросы для адаптивности */
-@media (min-width: 768px) {
-    .welcome-container {
-        margin: 0px;
-    }
-    .slogan {
-        margin: 150px 0px 40px 0px;
-    }
-    
-    .title {
-        font-size: 48px;
-    }
-    
-    .subtitle {
-        font-size: 24px;
-    }
-    
-    .welcome-btn {
-        font-size: 18px;
-        padding: 18px 38px;
-        margin-bottom: 280px;
-    }
-}
-
 @media (min-width: 1024px) {
     
     .slogan {
@@ -105,6 +82,28 @@
     }
 }
 
+@media (min-width: 768px) {
+    .slogan {
+        margin: 150px 0px 40px 0px;
+    }
+    
+    .title {
+        font-size: 48px;
+    }
+    
+    .subtitle {
+        font-size: 24px;
+    }
+    
+    .welcome-btn {
+        font-size: 18px;
+        padding: 18px 38px;
+        margin-bottom: 280px;
+    }
+}
+
+
+
 @media (max-width: 480px) {
     .welcome-container {
         margin: 0;
@@ -114,11 +113,11 @@
     }
     
     .title {
-        font-size: 25px;
+        font-size: 28px;
     }
     
     .subtitle {
-        font-size: 15px;
+        font-size: 14px;
         margin-top: 15px;
     }
     

@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { authService } from '../../api/auth';
-import '../../styles/login.css'
-
+import '../../styles/login.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const LoginForm = () => {
   const [login, setLogin] = useState('');

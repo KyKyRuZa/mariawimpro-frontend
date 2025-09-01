@@ -50,11 +50,11 @@
 }
 
 .price-btn:hover {
-  background-color: #b58d33;
+  background-color: #a88530;
 }
 
 .price-btn.active {
-  background-color: #a88530;
+  background-color: #775d21;
 }
 
 .price-list {

@@ -71,13 +71,15 @@ body{
       .price-container, 
       .news-container, 
       .reviews-container,
-      .mapContainer,
       .coach-info-container,
       .header-container,
       .footer-container,
       .welcome-container{
         margin: 0px 20px;
       }
+      .mapContainer {
+        margin: 50px 20px;
+    }
 
       .main-title{
         text-align: center;

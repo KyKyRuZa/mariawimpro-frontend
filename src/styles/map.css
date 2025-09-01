@@ -152,9 +152,6 @@
 
 /* Медиа-запросы для планшетов */
 @media (min-width: 769px) and (max-width: 1024px) {
-     .mapContainer {
-        margin: 50px 20px;
-    }
     
     .poolsList {
         width: 45%;
