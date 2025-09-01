@@ -29,7 +29,6 @@ const AdminPanel = () => {
     checkAuth();
   }, [navigate]);
 
-  // Закрытие меню при изменении размера окна
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 768) {

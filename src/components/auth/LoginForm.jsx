@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import { authService } from '../../api/auth'; // Импортируем сервис аутентификации
+import { authService } from '../../api/auth';
 import '../../styles/login.css'
 
 
@@ -30,7 +30,6 @@ const LoginForm = () => {
       setError('');
       setSuccess('');
       
-      // Вызываем метод login из AuthService
       await authService.login(login, password);
       
       const from = location.state?.from?.pathname || '/admin';
@@ -42,11 +41,9 @@ const LoginForm = () => {
       }, 1000);
       
     } catch (err) {
-      // Обрабатываем ошибки из AuthService
       let errorMessage = 'Произошла неизвестная ошибка';
       
       if (err.response) {
-        // Ошибка от сервера с кодом статуса
         switch (err.response.status) {
           case 401:
             errorMessage = 'Неверный логин или пароль';
@@ -61,10 +58,8 @@ const LoginForm = () => {
             errorMessage = err.response.data?.message || `Ошибка сервера: ${err.response.status}`;
         }
       } else if (err.request) {
-        // Запрос был сделан, но ответ не получен
         errorMessage = 'Нет соединения с сервером. Проверьте интернет-соединение';
       } else {
-        // Что-то пошло не так при настройке запроса
         errorMessage = err.message || 'Ошибка при отправке запроса';
       }
       

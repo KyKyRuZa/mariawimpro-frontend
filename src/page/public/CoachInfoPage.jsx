@@ -18,11 +18,9 @@ const CoachInfoPage = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // Загружаем данные тренера
                 const coachResponse = await coachesApi.getById(coachId);
                 setCoach(coachResponse.data);
 
-                // Загружаем галерею тренера
                 const galleryResponse = await galleryApi.getByCoachId(coachId);
                 setGallery(galleryResponse.data);
             } catch (error) {
@@ -38,17 +36,14 @@ const CoachInfoPage = () => {
 
     const openPhoto = (photo) => {
         setSelectedPhoto(photo);
-        // Блокируем прокрутку фона при открытии модального окна
         document.body.style.overflow = 'hidden';
     };
 
     const closePhoto = () => {
         setSelectedPhoto(null);
-        // Восстанавливаем прокрутку фона
         document.body.style.overflow = 'unset';
     };
 
-    // Закрытие по клавише Escape
     useEffect(() => {
         const handleEscape = (e) => {
             if (e.key === 'Escape') {
@@ -83,7 +78,7 @@ const CoachInfoPage = () => {
                     ←
                 </button>
                     <img 
-                        src={`http://mariaswimpro.ru/assets/${coach.photo}`}
+                        src={`https://mariaswimpro.ru/assets/${coach.photo}`}
                         alt={coach.fullName} 
                         className="coach-avatar" 
                     />
@@ -99,7 +94,6 @@ const CoachInfoPage = () => {
                     </div>
                 </div>
 
-                {/* Секция галереи */}
                 <div className="coach-gallery-section">
                     <h2>Галерея</h2>
                     
@@ -118,7 +112,7 @@ const CoachInfoPage = () => {
                                     onClick={() => openPhoto(photo)}
                                 >
                                     <img
-                                        src={photo.fullPhotoUrl || `http://mariaswimpro.ru/assets/${photo.photoUrl}`}
+                                        src={photo.fullPhotoUrl || `https://mariaswimpro.ru/assets/${photo.photoUrl}`}
                                         alt={photo.caption || `Фото ${coach.fullName}`}
                                         className="gallery-image"
                                         data-ratio="auto"
@@ -135,7 +129,6 @@ const CoachInfoPage = () => {
                 </div>
             </div>
 
-            {/* Модальное окно для просмотра фото */}
             {selectedPhoto && (
                 <div className="overlay-overlay" onClick={closePhoto}>
                     <div className="overlay-content" onClick={e => e.stopPropagation()}>
@@ -147,7 +140,7 @@ const CoachInfoPage = () => {
                             ×
                         </button>
                         <img
-                            src={selectedPhoto.fullPhotoUrl || `http://mariaswimpro.ru/assets/${selectedPhoto.photoUrl}`}
+                            src={selectedPhoto.fullPhotoUrl || `https://mariaswimpro.ru/assets/${selectedPhoto.photoUrl}`}
                             alt={selectedPhoto.caption || `Фото ${coach.fullName}`}
                             className="overlay-image"
                         />

@@ -1,4 +1,3 @@
-// src/hooks/useNews.js
 import { useState, useCallback } from 'react';
 import { newsApi } from '../api/news';
 import { useApi } from './useApi';

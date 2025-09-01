@@ -1,5 +1,5 @@
 import "../../styles/about.css";
-import coachImg from "../../styles/assets/maria-avatar.png"; // фото тренера, можно заменить
+import coachImg from "../../styles/assets/maria-avatar.png"; 
 
 const About = () => {
   return (

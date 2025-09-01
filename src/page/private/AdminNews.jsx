@@ -13,7 +13,6 @@ const AdminNews = () => {
     promo: false
   });
 
-  // Добавляем проверку, что news всегда массив
   const newsData = Array.isArray(news) ? news : [];
   useEffect(() => {
     refresh();
@@ -65,7 +64,6 @@ const AdminNews = () => {
       } else {
         await createNews(formData);
       }
-      // После успешного сохранения обновляем список новостей
       await refresh();
       handleCloseModal();
     } catch (error) {
@@ -77,7 +75,6 @@ const AdminNews = () => {
     if (window.confirm('Вы уверены, что хотите удалить эту новость?')) {
       try {
         await deleteNews(id);
-        // После удаления обновляем список новостей
         await refresh();
       } catch (error) {
         console.error('Ошибка при удалении новости:', error);
@@ -106,7 +103,6 @@ const AdminNews = () => {
       </div>
 
       <div className="admin-table-container">
-          {/* Горизонтальная таблица (на больших экранах) */}
           <table className="admin-table" aria-hidden={window.innerWidth < 425}>
             <thead>
               <tr>
@@ -141,7 +137,6 @@ const AdminNews = () => {
             </tbody>
           </table>
 
-          {/* Вертикальные карточки (на маленьких экранах) */}
           <div className="cards-list" aria-hidden={window.innerWidth >= 425}>
             {newsData.length === 0 ? (
               <div className="no-data">Новости не найдены</div>

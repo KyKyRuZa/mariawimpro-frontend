@@ -8,7 +8,6 @@ const NewsPage = () => {
     const hasFetchedRef = useRef(false);
 
     useEffect(() => {
-        // Загружаем новости только если они еще не загружены и запрос еще не выполнялся
         if (news.length === 0 && !loading && !hasFetchedRef.current) {
             hasFetchedRef.current = true;
             fetchNews();

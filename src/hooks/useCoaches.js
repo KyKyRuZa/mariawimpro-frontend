@@ -1,4 +1,3 @@
-// src/hooks/useCoaches.js
 import { useState, useEffect } from 'react';
 import { coachesApi } from '../api/coaches';
 import { useApi } from './useApi';
@@ -10,7 +9,7 @@ export const useCoaches = () => {
   const fetchCoaches = async () => {
     try {
       const result = await api.execute(coachesApi.getAll);
-      setCoaches(result.data || result); // В зависимости от структуры ответа
+      setCoaches(result.data || result);
       return result;
     } catch (error) {
       console.error('Error fetching coaches:', error);

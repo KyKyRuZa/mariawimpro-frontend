@@ -1,5 +1,3 @@
-// hooks/useTariffs.js
-
 import { useState, useCallback, useRef } from 'react';
 import { tariffsApi } from '../api/tariffs';
 import { useApi } from './useApi';
@@ -11,7 +9,7 @@ export const useTariffs = () => {
 
   const fetchTariffs = useCallback(async (force = false) => {
     if (!force && hasFetchedRef.current) {
-      return tariffs; // возвращаем текущее состояние
+      return tariffs; 
     }
 
     try {
@@ -25,7 +23,7 @@ export const useTariffs = () => {
       hasFetchedRef.current = true;
       return [];
     }
-  }, [api]); // Убрали `tariffs` из зависимостей
+  }, [api]); 
 
   const getTariff = useCallback(async (id) => {
     return api.execute(tariffsApi.getById, id);
@@ -33,14 +31,13 @@ export const useTariffs = () => {
 
   const createTariff = useCallback(async (tariffData) => {
     const result = await api.execute(tariffsApi.create, tariffData);
-    // Важно: принудительно перезагружаем список, чтобы избежать проблем с кэшированием
     await fetchTariffs(true);
     return result;
   }, [api, fetchTariffs]);
 
   const updateTariff = useCallback(async (id, tariffData) => {
     const result = await api.execute(tariffsApi.update, id, tariffData);
-    await fetchTariffs(true); // Принудительно обновляем данные
+    await fetchTariffs(true); 
     return result;
   }, [api, fetchTariffs]);
 

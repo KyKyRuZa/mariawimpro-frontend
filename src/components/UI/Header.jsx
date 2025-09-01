@@ -8,7 +8,6 @@ const Header = () => {
   const [activeSection, setActiveSection] = useState('forma-obucheniya');
 
   useEffect(() => {
-    // Инициализация react-scroll
     Events.scrollEvent.register('begin', (to) => {
       setActiveSection(to);
     });
@@ -26,7 +25,6 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    // Блокировка скролла при открытом меню
     if (isMenuOpen) {
       document.body.classList.add('menu-open');
     } else {

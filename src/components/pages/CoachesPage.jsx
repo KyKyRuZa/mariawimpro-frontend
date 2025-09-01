@@ -37,7 +37,7 @@ const CoachesPage = () => {
                         key={coach.id}
                         coachId={coach.id}
                         text={coach.fullName}
-                        image={`http://mariaswimpro.ru/assets/${coach.photo}`}
+                        image={`https://mariaswimpro.ru/assets/${coach.photo}`}
                         alt={coach.fullName}
                     />
                 ))}

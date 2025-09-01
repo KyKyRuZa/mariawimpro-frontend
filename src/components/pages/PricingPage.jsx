@@ -1,4 +1,3 @@
-// PricePage.js
 import React, { useState, useEffect } from 'react';
 import PriceCard from "../card/PriceCard";
 import { tariffsApi } from '../../api/tariffs';
@@ -10,7 +9,6 @@ const PricePage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Функция для сортировки тарифов по длительности
   const sortTariffsByDuration = (tariffs) => {
     const order = ['1 тренировка', '4 тренировки', '7 тренировок', '8 тренировок', '10 тренировок'];
     return [...tariffs].sort((a, b) => {
@@ -23,7 +21,6 @@ const PricePage = () => {
       try {
         const data = await tariffsApi.getAll();
         
-        // Фильтруем данные по категориям и типам
         const groupBig = sortTariffsByDuration(
           data
             .filter(item => item.category === 'group' && item.type === 'big')

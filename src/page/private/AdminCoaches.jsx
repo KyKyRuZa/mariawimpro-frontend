@@ -48,7 +48,6 @@ const AdminCoaches = () => {
         photo: file
       }));
       
-      // Создаем превью изображения
       const reader = new FileReader();
       reader.onloadend = () => {
         setImagePreview(reader.result);
@@ -60,7 +59,6 @@ const AdminCoaches = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Проверяем, что при создании нового тренера загружено изображение
     if (!editingCoach && !formData.photo) {
       alert('Пожалуйста, загрузите фотографию тренера');
       return;
@@ -150,7 +148,6 @@ const AdminCoaches = () => {
       </div>
 
       <div className="admin-table-container">
-        {/* Таблица (на больших экранах) */}
         <table className="admin-table" aria-hidden={window.innerWidth < 425}>
           <thead>
             <tr>
@@ -177,7 +174,6 @@ const AdminCoaches = () => {
           </tbody>
         </table>
 
-        {/* Карточки (на маленьких экранах) */}
         <div className="cards-list" aria-hidden={window.innerWidth >= 425}>
           {coaches.length === 0 ? (
             <div className="no-data">Нет тренеров</div>

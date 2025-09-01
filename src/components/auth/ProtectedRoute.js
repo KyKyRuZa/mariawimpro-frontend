@@ -23,7 +23,7 @@ const ProtectedRoute = ({ children }) => {
   }, [navigate]);
 
   if (isAuthenticated === null) {
-    return <div>Загрузка...</div>; // или спиннер
+    return <div>Загрузка...</div>; 
   }
 
   return isAuthenticated ? children : <LoginForm />;
