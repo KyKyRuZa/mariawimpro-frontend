@@ -1,0 +1,136 @@
+.bot-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #0088cc, #00a2ff);
+  color: white;
+  padding: 16px 20px;
+  border-radius: 16px;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(0, 136, 204, 0.3);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 1000;
+  gap: 12px;
+  max-width: 320px;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.bot-widget.hidden {
+  transform: translateY(100px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.bot-widget:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 136, 204, 0.4);
+}
+
+.bot-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.bot-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.bot-text {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.bot-subtext {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.bot-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 18px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.bot-close:hover {
+  opacity: 1;
+}
+
+.bot-widget-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0088cc, #00a2ff);
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 136, 204, 0.4);
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+.bot-widget-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(0, 136, 204, 0.5);
+}
+
+/* Анимация пульсации */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 136, 204, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(0, 136, 204, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 136, 204, 0);
+  }
+}
+
+.bot-widget-toggle {
+  animation: pulse 2s infinite;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .bot-widget {
+    bottom: 15px;
+    right: 15px;
+    left: 15px;
+    max-width: none;
+    padding: 14px 18px;
+  }
+  
+  .bot-text {
+    font-size: 15px;
+  }
+  
+  .bot-subtext {
+    font-size: 13px;
+  }
+  
+  .bot-widget-toggle {
+    bottom: 15px;
+    right: 15px;
+    width: 55px;
+    height: 55px;
+  }
+}
