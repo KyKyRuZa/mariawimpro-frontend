@@ -182,7 +182,6 @@
   }
   
   .button-group {
-    flex-direction: column;
     gap: 6px;
     margin-bottom: 20px;
   }

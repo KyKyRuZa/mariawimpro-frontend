@@ -59,9 +59,9 @@ body{
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  overflow-x: hidden; /* Скрываем горизонтальный скролл */
-            width: 100%;
-            position: relative;
+  overflow-x: hidden; 
+  width: 100%;
+  position: relative;
 }
 
 @media (max-width: 1024px) {
@@ -72,7 +72,10 @@ body{
       .news-container, 
       .reviews-container,
       .mapContainer,
-      .coach-info-container{
+      .coach-info-container,
+      .header-container,
+      .footer-container,
+      .welcome-container{
         margin: 0px 20px;
       }
 
