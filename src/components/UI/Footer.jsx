@@ -3,7 +3,7 @@ import { Link } from 'react-scroll';
 import '../../styles/UI/footer.css';
 import logo from '../../styles/assets/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faWhatsapp, faVk, faTelegram } from '@fortawesome/free-brands-svg-icons';
+import { faVk, faTelegram } from '@fortawesome/free-brands-svg-icons';
 
 const Footer = () => {
     const navItems = [
@@ -26,9 +26,6 @@ const Footer = () => {
             </div>
           </div>
           <div className="footer-social">
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              <FontAwesomeIcon icon={faWhatsapp} size="2x" color="white" />
-            </a>
             <a href="#" target="_blank" rel="noopener noreferrer">
               <FontAwesomeIcon icon={faVk} size="2x" color="white" />
             </a>
