@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 
-Host: mariaswimpro.ru
+Host: https://mariaswimpro.ru
