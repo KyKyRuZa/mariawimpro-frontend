@@ -12,6 +12,7 @@ const AdminCoaches = () => {
     specialization: '',
     merits: '',
     experience: '',
+    phone: '',
     description: '',
     photo: null
   });
@@ -25,6 +26,7 @@ const AdminCoaches = () => {
         specialization: editingCoach.specialization || '',
         merits: editingCoach.merits || '',
         experience: editingCoach.experience || '',
+        phone: editingCoach.phone || '',
         description: editingCoach.description || '',
         photo: null
       });
@@ -57,19 +59,20 @@ const AdminCoaches = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    if (!editingCoach && !formData.photo) {
-      alert('Пожалуйста, загрузите фотографию тренера');
-      return;
-    }
-    
-    const submitData = new FormData();
+  e.preventDefault();
+  
+  if (!editingCoach && !formData.photo) {
+    alert('Пожалуйста, загрузите фотографию тренера');
+    return;
+  }
+  
+  const submitData = new FormData();
     submitData.append('fullName', formData.fullName);
     submitData.append('education', formData.education);
     submitData.append('specialization', formData.specialization);
     submitData.append('merits', formData.merits);
     submitData.append('experience', formData.experience.toString());
+    submitData.append('phone', formData.phone);
     submitData.append('description', formData.description);
     
     if (formData.photo) {
@@ -91,6 +94,7 @@ const AdminCoaches = () => {
         specialization: '',
         merits: '',
         experience: '',
+        phone: '',
         description: '',
         photo: null
       });
@@ -126,6 +130,7 @@ const AdminCoaches = () => {
       specialization: '',
       merits: '',
       experience: '',
+      phone: '',
       description: '',
       photo: null
     });
@@ -271,6 +276,18 @@ const AdminCoaches = () => {
                 />
               </div>
 
+              <div className="form-group">
+                <label htmlFor="phone">Телефон</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  placeholder="+7 (XXX) XXX-XX-XX"
+                />
+              </div>
+              
               <div className="form-group">
                 <label htmlFor="description">Описание *</label>
                 <textarea

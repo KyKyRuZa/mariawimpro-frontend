@@ -1,38 +1,25 @@
-import { useState, useEffect } from 'react';
 import CoachesCard from "../card/CoachesCard";
 import '../../styles/coache.css'
-import { coachesApi } from '../../api/coaches';
 import { useCoaches } from '../../hooks/useCoaches';
 
 const CoachesPage = () => {
-    const [coaches, setCoaches] = useState([]);
-    const {  loading, error } = useCoaches();
-
-    useEffect(() => {
-        const fetchCoaches = async () => {
-            try {
-                const response = await coachesApi.getAll();
-                setCoaches(response.data);
-            } catch (error) {
-                console.error('Ошибка при загрузке тренеров:', error);
-            }
-        };
-
-        fetchCoaches();
-    }, []);
+    const { coaches, loading, error } = useCoaches();
+    
+    const sortedCoaches = [...coaches].sort((a, b) => a.id - b.id);
 
     if (loading) {
-        return <div className="loading">Загрузка новостей...</div>;
+        return <div className="loading">Загрузка тренеров...</div>;
     }
 
     if (error) {
         return <div className="error">Ошибка загрузки тренеров: {error.message}</div>;
     }
+
     return (
         <div className="coaches-container">
             <div className="main-title">НАШИ ТРЕНЕРА</div>
             <div className="coaches-grid">
-                {coaches.map(coach => (
+                {sortedCoaches.map(coach => (
                     <CoachesCard
                         key={coach.id}
                         coachId={coach.id}
