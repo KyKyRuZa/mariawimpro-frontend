@@ -43,7 +43,6 @@
 
 .coaches-card-image {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 100%;
     max-width: 345px;
 }
 

@@ -89,7 +89,7 @@ const CoachInfoPage = () => {
                             <p><strong>Специализация:</strong> {coach.specialization}</p>
                             <p><strong>Достижения:</strong> {coach.merits}</p>
                             <p><strong>Стаж работы:</strong> {coach.experience} лет</p>
-                            <p><strong>Номер телефона</strong> {coach.phone}</p>
+                            <p><strong>Номер телефона:</strong> {coach.phone}</p>
                             <p><strong>Описание:</strong> {coach.description}</p>
                         </div>
                     </div>
