@@ -66,6 +66,34 @@ body{
   position: relative;
 }
 
+@media (max-width: 1440px) {
+      .training-container, 
+      .about-container, 
+      .advantage-container, 
+      .price-container, 
+      .news-container, 
+      .reviews-container,
+      .coach-info-container,
+      .header-container,
+      .footer-container,
+      .welcome-container,
+      .certificates-container,
+      .attributes-containe{
+        margin: 0px 110px;
+      }
+      .mapContainer {
+        margin: 50px 20px;
+    }
+
+      .main-title{
+        text-align: center;
+        font-size: 40px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin: 54px 0px;  
+      }
+}
+
 @media (max-width: 1024px) {
       .training-container, 
       .about-container, 
@@ -79,7 +107,7 @@ body{
       .welcome-container,
       .certificates-container,
       .attributes-containe{
-        margin: 0px 20px;
+        margin: 0px 55px;
       }
       .mapContainer {
         margin: 50px 20px;
@@ -87,7 +115,35 @@ body{
 
       .main-title{
         text-align: center;
-        font-size: 24px;
+        font-size: 36px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin: 54px 0px;  
+      }
+}
+
+@media (max-width: 768px) {
+      .training-container, 
+      .about-container, 
+      .advantage-container, 
+      .price-container, 
+      .news-container, 
+      .reviews-container,
+      .coach-info-container,
+      .header-container,
+      .footer-container,
+      .welcome-container,
+      .certificates-container,
+      .attributes-containe{
+        margin: 0px 15px;
+      }
+      .mapContainer {
+        margin: 50px 20px;
+    }
+
+      .main-title{
+        text-align: center;
+        font-size: 30px;
         font-weight: 700;
         letter-spacing: 1px;
         margin: 54px 0px;  
