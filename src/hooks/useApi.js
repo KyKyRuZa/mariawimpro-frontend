@@ -21,10 +21,36 @@ export const useApi = () => {
     }
   };
 
+  const executeFormData = async (url, formData, method = 'POST') => {
+    setLoading(true);
+    setError(null);
+    
+    try {
+      const response = await fetch(url, {
+        method: method,
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      setData(result);
+      return result;
+    } catch (err) {
+      setError(err);
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return {
     data,
     loading,
     error,
     execute,
+    executeFormData, // Добавляем новый метод
   };
 };

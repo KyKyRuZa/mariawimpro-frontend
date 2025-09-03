@@ -76,32 +76,34 @@ const AdminCoaches = () => {
   }
 };
 
-// Функция сжатия изображения
-const compressImage = async (file) => {
-  const options = {
-    maxSizeMB: 4,           // Максимальный размер после сжатия
-    maxWidthOrHeight: 1200, // Максимальное разрешение
-    useWebWorker: true,     // Использование веб-воркера для производительности
-    fileType: 'image/webp'  // Конвертация в WebP (опционально)
-  };
+  const compressImage = async (file) => {
+    const options = {
+      maxSizeMB: 2,
+      maxWidthOrHeight: 800,
+      useWebWorker: true,
+      fileType: 'image/jpeg',
+      quality: 1           
+    };
 
-  try {
-    // Если файл уже меньше лимита, не сжимаем
-    if (file.size <= 8 * 1024 * 1024) {
+    try {
+      // Если файл уже меньше 3MB, не сжимаем
+      if (file.size <= 3 * 1024 * 1024) {
+        return file;
+      }
+
+      console.log('Сжатие изображения...');
+      const compressedFile = await imageCompression(file, options);
+      
+      console.log('Изображение сжато', 
+        `Исходный: ${(file.size / 1024 / 1024).toFixed(2)}MB →`,
+        `Новый: ${(compressedFile.size / 1024 / 1024).toFixed(2)}MB`
+      );
+      
+      return compressedFile;
+    } catch (error) {
+      console.error('Ошибка сжатия:', error);
       return file;
     }
-
-    console.log('Сжатие изображения...', `Исходный размер: ${(file.size / 1024 / 1024).toFixed(2)}MB`);
-    
-    const compressedFile = await imageCompression(file, options);
-    
-    console.log('Изображение сжато', `Новый размер: ${(compressedFile.size / 1024 / 1024).toFixed(2)}MB`);
-    
-    return compressedFile;
-  } catch (error) {
-    console.error('Ошибка сжатия:', error);
-    return file; // Возвращаем оригинал если сжатие не удалось
-  }
 };
 
   const handleSubmit = async (e) => {

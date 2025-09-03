@@ -1,3 +1,4 @@
+// hooks/useCoaches.js
 import { useState, useEffect } from 'react';
 import { coachesApi } from '../api/coaches';
 import { useApi } from './useApi';
@@ -21,9 +22,10 @@ export const useCoaches = () => {
     return api.execute(coachesApi.getById, id);
   };
 
-  const createCoach = async (coachData) => {
+  const createCoach = async (formData) => {
     try {
-      const result = await api.execute(coachesApi.create, coachData);
+      // Используем executeFormData вместо execute
+      const result = await api.executeFormData('/api/coaches', formData, 'POST');
       setCoaches(prev => [...prev, result.data || result]);
       return result;
     } catch (error) {
@@ -32,9 +34,10 @@ export const useCoaches = () => {
     }
   };
 
-  const updateCoach = async (id, coachData) => {
+  const updateCoach = async (id, formData) => {
     try {
-      const result = await api.execute(coachesApi.update, id, coachData);
+      // Для обновления также используем FormData
+      const result = await api.executeFormData(`/api/coaches/${id}`, formData, 'PUT');
       setCoaches(prev => prev.map(coach => 
         coach.id === id ? (result.data || result) : coach
       ));
