@@ -81,169 +81,127 @@
   font-weight: 500;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 1024px) {
+  .card-container {
+    flex-wrap: wrap;
+    gap: 25px;
+  }
+  
+  .price-card {
+    width: 430px;
+    padding: 35px 18px;
+  }
+  
+  .price-card-title {
+    font-size: 32px;
+  }
+  
+  .price-btn {
+    padding: 18px;
+    font-size: 22px;
+    margin-bottom: 90px;
+  }
+  
+  .price-label {
+    font-size: 28px;
+  }
+  
+  .price-value {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .card-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .price-card {
+    width: 100%;
+    max-width: 500px;
+    padding: 30px 20px;
+  }
+  
+  .price-card-title {
+    font-size: 28px;
+    margin-bottom: 25px;
+  }
+  
+  .button-group {
+    gap: 8px;
+  }
+  
+  .price-btn {
+    padding: 16px;
+    font-size: 20px;
+    margin-bottom: 70px;
+  }
+  
+  .price-label {
+    font-size: 24px;
+  }
+  
+  .price-value {
+    font-size: 20px;
+  }
+  
+  .price-item {
+    padding: 25px 10px;
+  }
+}
+
+@media (max-width: 425px) {
   .price-container {
     padding: 15px;
   }
-
+  
   .main-title {
     font-size: 28px;
     margin-bottom: 30px;
   }
-
+  
   .card-container {
     gap: 15px;
   }
-
+  
   .price-card {
-    width: 100%;
     max-width: 100%;
     padding: 25px 15px;
     border-radius: 15px;
   }
-
+  
   .price-card-title {
     font-size: 24px;
     margin-bottom: 20px;
   }
-
+  
   .button-group {
     gap: 6px;
     margin-bottom: 20px;
   }
-
+  
   .price-btn {
     padding: 14px;
     font-size: 18px;
     margin-bottom: 50px;
     width: 100%;
   }
-
+  
   .price-list {
     margin-bottom: 30px;
   }
-
+  
   .price-label {
     font-size: 20px;
   }
-
+  
   .price-value {
     font-size: 18px;
   }
-
+  
   .price-item {
     padding: 15px 8px;
-  }
-}
-
-@media (min-width: 481px) and (max-width: 768px) {
-  .card-container {
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .price-card {
-    width: 100%;
-    max-width: 500px;
-    padding: 30px 20px;
-  }
-
-  .price-card-title {
-    font-size: 28px;
-    margin-bottom: 25px;
-  }
-
-  .button-group {
-    gap: 8px;
-  }
-
-  .price-btn {
-    padding: 16px;
-    font-size: 20px;
-    margin-bottom: 70px;
-  }
-
-  .price-label {
-    font-size: 24px;
-  }
-
-  .price-value {
-    font-size: 20px;
-  }
-
-  .price-item {
-    padding: 25px 10px;
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-  .card-container {
-    flex-wrap: wrap;
-    gap: 25px;
-  }
-
-  .price-card {
-    width: 430px;
-    padding: 35px 18px;
-  }
-
-  .price-card-title {
-    font-size: 32px;
-  }
-
-  .price-btn {
-    padding: 18px;
-    font-size: 22px;
-    margin-bottom: 90px;
-  }
-
-  .price-label {
-    font-size: 28px;
-  }
-
-  .price-value {
-    font-size: 24px;
-  }
-}
-
-@media (min-width: 1025px) {
-  .card-container {
-    flex-wrap: nowrap;
-    justify-content: center;
-  }
-
-  .price-card {
-    width: 452px;
-    padding: 40px 20px;
-    border-radius: 20px;
-  }
-
-  .price-card-title {
-    font-size: 36px;
-    margin-bottom: 33px;
-  }
-
-  .button-group {
-    gap: 10px;
-    margin-bottom: 30px;
-  }
-
-  .price-btn {
-    padding: 20px;
-    font-size: 24px;
-    margin-bottom: 100px;
-  }
-
-  .price-label {
-    font-size: 32px;
-  }
-
-  .price-value {
-    font-size: 28px;
-  }
-
-  .price-item {
-    padding: 30px 10px;
   }
 }

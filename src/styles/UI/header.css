@@ -319,7 +319,7 @@
 }
 
 /* Настольные компьютеры — от 1025px */
-@media (min-width: 1025px) {
+@media (min-width: 1025px) and (max-width: 1440px) {
   /* Базовые стили для десктопа (можно вынести в основной CSS) */
   .header {
     height: 120px;
