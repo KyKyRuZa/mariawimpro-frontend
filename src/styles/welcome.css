@@ -58,71 +58,95 @@
 }
 
 /* Медиа-запросы для адаптивности */
-@media (min-width: 1024px) {
-    
-    .slogan {
-        margin: 200px 0px 40px 0px;
-        width: 976px;
-    }
-    
-    .title {
-        font-size: 64px;
-        padding: 0;
-    }
-    
-    .subtitle {
-        font-size: 32px;
-        padding: 0;
-    }
-    
-    .welcome-btn {
-        font-size: 20px;
-        padding: 20px 44px;
-        margin-bottom: 356px;
-    }
-}
-
-@media (min-width: 768px) {
-    .slogan {
-        margin: 150px 0px 40px 0px;
-    }
-    
-    .title {
-        font-size: 48px;
-    }
-    
-    .subtitle {
-        font-size: 24px;
-    }
-    
-    .welcome-btn {
-        font-size: 18px;
-        padding: 18px 38px;
-        margin-bottom: 280px;
-    }
-}
-
-
-
+/* 1. Мобильные устройства (маленькие) — до 480px */
 @media (max-width: 480px) {
-    .welcome-container {
-        margin: 0;
-    }
-    .slogan {
-        margin: 80px 0px 30px 0px;
-    }
-    
-    .title {
-        font-size: 28px;
-    }
-    
-    .subtitle {
-        font-size: 14px;
-        margin-top: 15px;
-    }
-    
-    .welcome-btn {
-        padding: 14px 28px;
-        margin-bottom: 150px;
-    }
+  .welcome-container {
+    margin: 0;
+  }
+
+  .slogan {
+    margin: 80px 0 30px 0;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    margin-top: 15px;
+  }
+
+  .welcome-btn {
+    padding: 14px 28px;
+    margin-bottom: 150px;
+    font-size: 16px;
+  }
+}
+
+/* 2. Мобильные устройства (средние и большие) — от 481px до 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+  .slogan {
+    margin: 120px 0 35px 0;
+  }
+
+  .title {
+    font-size: 44px;
+  }
+
+  .subtitle {
+    font-size: 22px;
+    margin-top: 12px;
+  }
+
+  .welcome-btn {
+    font-size: 16px;
+    padding: 16px 32px;
+    margin-bottom: 200px;
+  }
+}
+
+/* 3. Планшеты (альбом) и маленькие ноутбуки — от 769px до 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .slogan {
+    margin: 150px 0 40px 0;
+  }
+
+  .title {
+    font-size: 62px;
+  }
+
+  .subtitle {
+    font-size: 31px;
+  }
+
+  .welcome-btn {
+    font-size: 18px;
+    padding: 18px 38px;
+    margin-bottom: 280px;
+  }
+}
+
+/* 4. Настольные компьютеры — от 1025px */
+@media (min-width: 1025px) {
+  .slogan {
+    margin: 200px 0 40px 0;
+    width: 976px;
+  }
+
+  .title {
+    font-size: 64px;
+    padding: 0;
+  }
+
+  .subtitle {
+    font-size: 32px;
+    padding: 0;
+  }
+
+  .welcome-btn {
+    font-size: 20px;
+    padding: 20px 44px;
+    margin-bottom: 356px;
+  }
 }

@@ -95,8 +95,95 @@
     width: 25px;
 }
 
+@media (max-width: 480px) {
+  .header-container {
+    padding: 0 16px;
+  }
 
-@media (max-width: 1024px) {
+  .header {
+    height: 90px;
+    padding: 15px 0;
+  }
+
+  .header-logo .logo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .header-logo div {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .header-phone {
+    display: none;
+  }
+
+  .header-nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 90%;
+    max-width: 300px;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 120px 20px 40px;
+    z-index: 999;
+    overflow-y: auto;
+  }
+
+  .header-nav.active {
+    right: 0;
+    display: block;
+  }
+
+  .header-nav ul {
+    flex-direction: column;
+    gap: 1.8rem;
+    padding: 0;
+    margin: 0;
+  }
+
+  .header-nav a {
+    font-size: 18px;
+    display: block;
+    padding: 8px 0;
+  }
+
+  .header-nav a,
+  .header-phone {
+    font-size: 14px;
+  }
+
+  /* Анимация бургера */
+  .menu-toggle.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+    background-color: white;
+  }
+
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+    background-color: white;
+  }
+
+  /* Запрет скролла при открытом меню */
+  body.menu-open {
+    overflow: hidden;
+  }
+}
+
+/* Мобильные устройства (средние и большие) — от 481px до 768px */
+@media (min-width: 481px) and (max-width: 768px) {
   .header {
     height: 100px;
     padding: 20px 0;
@@ -111,14 +198,6 @@
     font-size: 16px;
     line-height: 28px;
   }
-
-  .header-nav a,
-  .header-phone {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 768px) {
 
   .menu-toggle {
     display: flex;
@@ -161,10 +240,19 @@
     padding: 8px 0;
   }
 
+  .header-nav a,
+  .header-phone {
+    font-size: 14px;
+  }
+
   /* Анимация бургера */
-  .menu-toggle.active span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg) ;
+  .menu-toggle.active span:nth-child(1),
+  .menu-toggle.active span:nth-child(3) {
     background-color: white;
+  }
+
+  .menu-toggle.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
   }
 
   .menu-toggle.active span:nth-child(2) {
@@ -172,29 +260,106 @@
   }
 
   .menu-toggle.active span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg) ;
-    background-color: white;
+    transform: translateY(-8px) rotate(-45deg);
   }
 
-  /* Запрет скролла при открытом меню */
   body.menu-open {
     overflow: hidden;
-
   }
 }
 
-@media (max-width: 480px) {
-  .header-container {
-    padding: 0 16px;
+/* Планшеты (альбом) и маленькие ноутбуки — от 769px до 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .header {
+    height: 100px;
+    padding: 20px 0;
+  }
+
+  .header-logo .logo {
+    width: 60px;
+    height: 60px;
   }
 
   .header-logo div {
     font-size: 16px;
-    line-height: 22px;
+    line-height: 28px;
+  }
+
+  .header-nav a,
+  .header-phone {
+    font-size: 14px;
+  }
+
+  /* Мобильное меню скрыто — показываем обычное */
+  .menu-toggle {
+    display: none;
   }
 
   .header-nav {
-    width: 90%;
-    max-width: 300px;
+    display: flex !important; /* переопределяем, если было active */
+    position: static;
+    width: auto;
+    max-width: none;
+    height: auto;
+    background: transparent;
+    backdrop-filter: none;
+    padding: 0;
+  }
+
+  .header-nav ul {
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  .header-nav a {
+    font-size: 14px;
+    display: inline;
+    padding: 0;
+  }
+}
+
+/* Настольные компьютеры — от 1025px */
+@media (min-width: 1025px) {
+  /* Базовые стили для десктопа (можно вынести в основной CSS) */
+  .header {
+    height: 120px;
+    padding: 30px 0;
+  }
+
+  .header-logo .logo {
+    width: 70px;
+    height: 70px;
+  }
+
+  .header-logo div {
+    font-size: 18px;
+    line-height: 32px;
+  }
+
+  .header-nav a,
+  .header-phone {
+    font-size: 12px;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  .header-nav {
+    display: flex;
+    position: static;
+    width: auto;
+    height: auto;
+    background: transparent;
+    padding: 0;
+  }
+
+  .header-nav ul {
+    flex-direction: row;
+    gap: 3rem;
+  }
+
+  .header-nav a {
+    font-size: 16px;
   }
 }

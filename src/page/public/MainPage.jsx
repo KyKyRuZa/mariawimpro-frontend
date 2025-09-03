@@ -11,6 +11,8 @@ import NewsPage from "../../components/pages/NewsPage";
 import ReviewsPage from "../../components/pages/ReviewsPage";
 import MapPage from "../../components/pages/MapPage";
 import BotWidget from '../../components/UI/BotWidget';
+import Attributes from "../../components/pages/Attributes";
+import Certificates from "../../components/pages/Certificates";
 const MainPage = () => {
   return (
     <>
@@ -24,6 +26,8 @@ const MainPage = () => {
       <section id="prays"><PricingPage /></section>
       <section id="novosti"><NewsPage /></section>
       <section><ReviewsPage /></section>
+      <section><Attributes/></section>
+      <section><Certificates/></section>
       {/* <section id="kontakty"><MapPage /></section> */}
        <BotWidget /> 
       <Footer />

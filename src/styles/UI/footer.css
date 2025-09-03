@@ -91,89 +91,128 @@
   margin: 0;
 }
 
-/* Медиа-запрос для экранов до 1025px */
-        @media (max-width: 1025px) {
-            .footer-container {
-                margin: 0px 100px 40px 100px;
-                gap: 40px;
-            }
-            
-            .footer-nav ul {
-                gap: 12px;
-            }
-            
-            .footer-nav-link {
-                font-size: 20px;
-            }
-        }
+@media (max-width: 480px) {
+  .footer {
+    padding: 25px 15px 15px;
+  }
 
-        /* Медиа-запрос для экранов до 768px */
-        @media (max-width: 768px) {
-            .footer-container {
-                flex-direction: column;
-                margin: 0px 50px 30px 50px;
-                gap: 30px;
-                align-items: center;
-                text-align: center;
-            }
-            
-            .footer-left {
-                align-items: center;
-            }
-            
-            .footer-nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px 25px;
-            }
-            
-            .footer-nav-link {
-                font-size: 18px;
-            }
-            
-            .footer-logo img {
-                height: 60px;
-            }
-        }
+  .footer-container {
+    margin: 0px 20px 25px 20px;
+    gap: 25px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 
-        /* Медиа-запрос для экранов до 425px */
-        @media (max-width: 425px) {
-            .footer {
-                padding: 25px 15px 15px;
-            }
-            
-            .footer-container {
-                margin: 0px 20px 25px 20px;
-                gap: 25px;
-            }
-            
-            .footer-nav ul {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .footer-logo {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .footer-social {
-                justify-content: center;
-            }
-            
-            .footer-logo img {
-                height: 50px;
-            }
-            
-            .logo-text {
-                font-size: 1rem;
-            }
-            
-            .logo-text span {
-                font-size: 0.8rem;
-            }
-            
-            .footer-copyright {
-                font-size: 0.8rem;
-            }
-        }
+  .footer-left {
+    align-items: center;
+  }
+
+  .footer-logo {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .footer-logo img {
+    height: 50px;
+  }
+
+  .logo-text {
+    font-size: 1rem;
+  }
+
+  .logo-text span {
+    font-size: 0.8rem;
+  }
+
+  .footer-social {
+    justify-content: center;
+  }
+
+  .footer-nav ul {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .footer-nav-link {
+    font-size: 18px;
+  }
+
+  .footer-copyright {
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .footer-container {
+    margin: 0px 50px 30px 50px;
+    gap: 30px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-left {
+    align-items: center;
+  }
+
+  .footer-logo img {
+    height: 60px;
+  }
+
+  .footer-nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px 25px;
+  }
+
+  .footer-nav-link {
+    font-size: 18px;
+  }
+
+  .footer-copyright {
+    font-size: 0.85rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .footer-container {
+    margin: 0px 100px 40px 100px;
+    gap: 40px;
+  }
+
+  .footer-nav ul {
+    gap: 12px;
+  }
+
+  .footer-nav-link {
+    font-size: 20px;
+  }
+
+  .footer-logo img {
+    height: 65px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .footer-container {
+    margin: 0px 220px 50px 220px;
+    gap: 50px;
+  }
+
+  .footer-nav ul {
+    gap: 15px;
+  }
+
+  .footer-nav-link {
+    font-size: 22px;
+  }
+
+  .footer-logo img {
+    height: 70px;
+  }
+
+  .footer-copyright {
+    font-size: 0.9rem;
+  }
+}

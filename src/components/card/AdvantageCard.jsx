@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../styles/card/advantage.css';
 
 const AdvantageCard = ({ 
   title, 

@@ -238,68 +238,7 @@
 .gallery-item:nth-child(4) { animation-delay: 0.4s; }
 .gallery-item:nth-child(5) { animation-delay: 0.5s; }
 
-@media (max-width: 1024px) {
-  .overlay-overlay {
-    padding: 12px;
-  }
-  
-  .overlay-content {
-    max-width: 95vw;
-    max-height: 95vh;
-  }
-  
-  .overlay-close {
-    top: 8px;
-    right: 8px;
-    width: 32px;
-    height: 32px;
-    font-size: 2rem;
-  }
-  
-  .overlay-image {
-    max-height: 70vh;
-  }
-  
-  .overlay-caption {
-    font-size: 1rem;
-    padding: 8px 12px;
-    margin-top: 12px;
-  }
-}
-
-@media (max-width: 768px) {
-  .overlay-overlay {
-    padding: 10px;
-  }
-  
-  .overlay-content {
-    max-width: 98vw;
-    max-height: 98vh;
-  }
-  
-  .overlay-close {
-    top: 5px;
-    right: 5px;
-    width: 30px;
-    height: 30px;
-    font-size: 1.8rem;
-    background: rgba(0, 0, 0, 0.4);
-  }
-  
-  .overlay-image {
-    max-height: 65vh;
-    border-radius: 6px;
-  }
-  
-  .overlay-caption {
-    font-size: 0.95rem;
-    padding: 8px 10px;
-    margin-top: 10px;
-    max-width: 95%;
-  }
-}
-
-@media (max-width: 425px) {
+@media (max-width: 480px) {
   .coach-header {
     position: relative;
     justify-content: center;
@@ -307,15 +246,16 @@
     flex-direction: column;
     align-items: center;
   }
+
   .overlay-overlay {
     padding: 5px;
   }
-  
+
   .overlay-content {
     max-width: 100vw;
     max-height: 100vh;
   }
-  
+
   .overlay-close {
     top: 3px;
     right: 3px;
@@ -324,17 +264,111 @@
     font-size: 1.6rem;
     background: rgba(0, 0, 0, 0.5);
   }
-  
+
   .overlay-image {
     max-height: 60vh;
     border-radius: 4px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   }
-  
+
   .overlay-caption {
     font-size: 0.9rem;
     padding: 6px 8px;
     margin-top: 8px;
     max-width: 98%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .overlay-overlay {
+    padding: 12px;
+  }
+
+  .overlay-content {
+    max-width: 95vw;
+    max-height: 95vh;
+  }
+
+  .overlay-close {
+    top: 8px;
+    right: 8px;
+    width: 32px;
+    height: 32px;
+    font-size: 2rem;
+  }
+
+  .overlay-image {
+    max-height: 70vh;
+  }
+
+  .overlay-caption {
+    font-size: 1rem;
+    padding: 8px 12px;
+    margin-top: 12px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .overlay-overlay {
+    padding: 10px;
+  }
+
+  .overlay-content {
+    max-width: 98vw;
+    max-height: 98vh;
+  }
+
+  .overlay-close {
+    top: 5px;
+    right: 5px;
+    width: 30px;
+    height: 30px;
+    font-size: 1.8rem;
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  .overlay-image {
+    max-height: 65vh;
+    border-radius: 6px;
+  }
+
+  .overlay-caption {
+    font-size: 0.95rem;
+    padding: 8px 10px;
+    margin-top: 10px;
+    max-width: 95%;
+  }
+}
+
+@media (min-width: 1025px) {
+  .overlay-overlay {
+    padding: 15px;
+  }
+
+  .overlay-content {
+    max-width: 90vw;
+    max-height: 90vh;
+  }
+
+  .overlay-close {
+    top: 10px;
+    right: 10px;
+    width: 36px;
+    height: 36px;
+    font-size: 2.2rem;
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .overlay-image {
+    max-height: 80vh;
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  }
+
+  .overlay-caption {
+    font-size: 1.1rem;
+    padding: 10px 16px;
+    margin-top: 15px;
+    max-width: 90%;
   }
 }

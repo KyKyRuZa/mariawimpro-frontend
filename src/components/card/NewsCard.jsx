@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../styles/card/news.css';
 
 const renderDescription = (text) => {
   if (!text) return null;

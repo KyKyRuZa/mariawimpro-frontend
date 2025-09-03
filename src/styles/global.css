@@ -35,7 +35,9 @@
 .news-container, 
 .reviews-container,
 .mapContainer,
-.coach-info-container{
+.coach-info-container,
+.certificates-container,
+.attributes-container{
   margin: 100px 220px;
 }
 
@@ -74,7 +76,9 @@ body{
       .coach-info-container,
       .header-container,
       .footer-container,
-      .welcome-container{
+      .welcome-container,
+      .certificates-container,
+      .attributes-containe{
         margin: 0px 20px;
       }
       .mapContainer {

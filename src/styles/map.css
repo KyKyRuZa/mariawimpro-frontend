@@ -116,58 +116,103 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Медиа-запросы для мобильных устройств */
+/* 1. Мобильные устройства (маленькие и средние) — до 768px */
 @media (max-width: 768px) {
-    .mapContainer {
-        flex-direction: column;
-        border-radius: 0;
-        min-height: 100vh;
-        box-shadow: none;
-        margin: 50px 20px;
-        border-radius: 20px;
-    }
-    
-    .poolsList, .mapFrame {
-        width: 100%;
-        height: 100%;
-    }
-    
-    .hiddenOnMobile {
-        display: none;
-    }
-    
-    .mobileToggle {
-        display: block;
-    }
-    
-    .poolItem {
-        padding: 15px;
-    }
-    
-    .phoneButton {
-        padding: 18px;
-        font-size: 20px;
-    }
+  .mapContainer {
+    flex-direction: column;
+    min-height: 100vh;
+    box-shadow: none;
+    margin: 50px 20px;
+    border-radius: 20px;
+  }
+
+  .poolsList,
+  .mapFrame {
+    width: 100%;
+    height: 100%;
+  }
+
+  .hiddenOnMobile {
+    display: none;
+  }
+
+  .mobileToggle {
+    display: block;
+  }
+
+  .poolItem {
+    padding: 15px;
+  }
+
+  .phoneButton {
+    padding: 18px;
+    font-size: 20px;
+  }
 }
 
-/* Медиа-запросы для планшетов */
+/* 2. Планшеты (альбомная ориентация) — от 769px до 1024px */
 @media (min-width: 769px) and (max-width: 1024px) {
-    
-    .poolsList {
-        width: 45%;
-        padding: 20px;
-    }
-    
-    .mapFrame {
-        width: 55%;
-    }
-    
-    .poolItem {
-        padding: 10px;
-    }
-    
-    .phoneButton {
-        padding: 12px;
-        font-size: 16px;
-    }
+  .poolsList {
+    width: 45%;
+    padding: 20px;
+  }
+
+  .mapFrame {
+    width: 55%;
+  }
+
+  .poolItem {
+    padding: 10px;
+  }
+
+  .phoneButton {
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  /* Возвращаем элементы, скрытые на мобильных */
+  .hiddenOnMobile {
+    display: block;
+  }
+
+  .mobileToggle {
+    display: none;
+  }
+}
+
+/* 3. Настольные компьютеры — от 1025px */
+@media (min-width: 1025px) {
+  .mapContainer {
+    flex-direction: row;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    margin: 50px auto;
+    max-width: 1400px;
+  }
+
+  .poolsList {
+    width: 35%;
+    padding: 25px;
+  }
+
+  .mapFrame {
+    width: 65%;
+  }
+
+  .poolItem {
+    padding: 12px;
+  }
+
+  .phoneButton {
+    padding: 14px;
+    font-size: 18px;
+  }
+
+  .hiddenOnMobile {
+    display: block;
+  }
+
+  .mobileToggle {
+    display: none;
+  }
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../styles/card/review.css';
 
 const ReviewsCard = ({ 
   name, 

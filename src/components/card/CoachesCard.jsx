@@ -1,4 +1,3 @@
-import '../../styles/card/coache.css'
 import { useNavigate } from 'react-router-dom';
 
 const CoachesCard = ({
