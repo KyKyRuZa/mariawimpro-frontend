@@ -1,165 +1,308 @@
-.coaches-card-image {
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.coaches-card-image img {
-    width: 100%;
-    height: 350px;
-    border-radius: 15px;
-    object-fit: cover;
-}
-
-.coaches-card-image:hover {
-    transform: scale(1.02);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.coaches-card-image:active {
-    transform: scale(0.98);
-}
+/* Убираем keyframes и заменяем на transitions */
 
 .coaches-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 20px;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+  gap: 20px;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  will-change: opacity;
+}
+
+.coaches-container.animate {
+  opacity: 1;
 }
 
 .main-title {
-    text-align: center;
-    font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    width: 100%;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+  will-change: opacity, transform;
+}
+
+.main-title.animate {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .coaches-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: center;
 }
 
 .coaches-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: opacity, transform;
+}
+
+.coaches-card.animate {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .coaches-card-text {
-    text-align: center;
-    width: 100%;
-    font-size: 20px;
-    font-weight: 600;
+  text-align: center;
+  width: 100%;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .coaches-card-image {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    max-width: 345px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 345px;
+  width: 100%;
+}
+
+.coaches-card-image img {
+  width: 100%;
+  height: 350px;
+  border-radius: 15px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.coaches-card-image:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.coaches-card-image:hover img {
+  transform: scale(1.05);
+}
+
+.coaches-card-image:active {
+  transform: scale(0.98);
+}
+
+/* Loading и error стили */
+.loading, .error {
+  text-align: center;
+  padding: 40px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.error {
+  color: #e74c3c;
+}
+
+/* Отключаем анимации для пользователей, которые предпочитают reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .coaches-container,
+  .main-title,
+  .coaches-card {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  .coaches-container.animate,
+  .main-title.animate,
+  .coaches-card.animate {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  .coaches-card-image:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .coaches-card-image:hover img {
+    transform: none;
+  }
+}
+
+/* Адаптивные медиа-запросы */
+@media (max-width: 480px) {
+  .coaches-container {
+    padding: 15px;
+    gap: 15px;
+  }
+  
+  .main-title {
+    font-size: 24px;
+    margin-bottom: 15px;
+    transform: translateY(20px);
+  }
+  
+  .coaches-grid {
+    gap: 15px;
+  }
+  
+  .coaches-card-text {
+    font-size: 18px;
+  }
+  
+  .coaches-card-image img {
+    height: 400px;
+    border-radius: 12px;
+  }
 }
 
 @media (min-width: 480px) {
-    .coaches-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 25px;
-    }
-    
-    .coaches-card-text {
-        font-size: 22px;
-    }
-    
-    .coaches-card-image img {
-        height: 380px;
-    }
+  .coaches-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+  
+  .coaches-card-text {
+    font-size: 22px;
+  }
+  
+  .coaches-card-image img {
+     height: 400px;
+  }
 }
 
 @media (min-width: 768px) {
-    .coaches-container {
-        padding: 30px;
-    }
-    
-    .main-title {
-        font-size: 32px;
-        margin-bottom: 30px;
-    }
-    
-    .coaches-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
-    }
-    
-    .coaches-card-text {
-        font-size: 24px;
-    }
-    
-    .coaches-card-image img {
-        height: 400px;
-        border-radius: 18px;
-    }
+  .coaches-container {
+    padding: 30px;
+  }
+  
+  .main-title {
+    font-size: 32px;
+    margin-bottom: 30px;
+    transform: translateY(25px);
+  }
+  
+  .coaches-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+  
+  .coaches-card-text {
+    font-size: 24px;
+  }
+  
+  .coaches-card-image img {
+     height: 400px;
+    border-radius: 18px;
+  }
 }
 
 @media (min-width: 1024px) {
-    .coaches-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
-    }
-    
-    .coaches-card-text {
-        font-size: 26px;
-        width: 305px;
-    }
-    
-    .coaches-card-image img {
-        width: 305px;
-        height: 450px;
-        border-radius: 20px;
-    }
+  .coaches-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+  
+  .coaches-card-text {
+    font-size: 26px;
+    width: 305px;
+  }
+  
+  .coaches-card-image img {
+    width: 305px;
+    height: 400px;
+    border-radius: 20px;
+  }
 }
 
 @media (min-width: 1280px) {
-    .coaches-container {
-        padding: 40px;
-    }
-    
-    .main-title {
-        font-size: 36px;
-    }
-    
-    .coaches-card-text {
-        font-size: 28px;
-    }
+  .coaches-container {
+    padding: 40px;
+  }
+  
+  .main-title {
+    font-size: 36px;
+    transform: translateY(30px);
+  }
+  
+  .coaches-card-text {
+    font-size: 28px;
+  }
+  
+  .coaches-card-image img {
+    height: 450px;
+  }
 }
 
-@media (max-width: 480px) {
-    .coaches-container {
-        padding: 15px;
-        gap: 15px;
-    }
-    
-    .main-title {
-        font-size: 24px;
-        margin-bottom: 15px;
-    }
-    
-    .coaches-grid {
-        gap: 15px;
-    }
-    
-    .coaches-card-text {
-        font-size: 18px;
-    }
-    
-    .coaches-card-image img {
-        height: 400px;
-        border-radius: 12px;
-    }
+/* Для очень маленьких экранов */
+@media (max-width: 320px) {
+  .coaches-container {
+    padding: 10px;
+    gap: 12px;
+  }
+  
+  .main-title {
+    font-size: 22px;
+    margin-bottom: 12px;
+    transform: translateY(15px);
+  }
+  
+  .coaches-grid {
+    gap: 12px;
+  }
+  
+  .coaches-card-text {
+    font-size: 16px;
+  }
+  
+  .coaches-card-image img {
+    height: 350px;
+    border-radius: 10px;
+  }
+}
+
+/* Для очень больших экранов */
+@media (min-width: 1440px) {
+  .coaches-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 50px;
+  }
+  
+  .main-title {
+    font-size: 40px;
+  }
+  
+  .coaches-grid {
+    gap: 40px;
+  }
+  
+  .coaches-card-text {
+    font-size: 30px;
+  }
+  
+  .coaches-card-image img {
+    height: 500px;
+  }
+}
+
+/* Для устройств с тач-скрином */
+@media (hover: none) and (pointer: coarse) {
+  .coaches-card-image:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .coaches-card-image:hover img {
+    transform: none;
+  }
+  
+  .coaches-card-image:active {
+    transform: scale(0.98);
+  }
 }

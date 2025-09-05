@@ -1,13 +1,42 @@
 .price-container {
-  padding: 20px;
   display: flex;
   flex-direction: column;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  will-change: opacity;
+}
+
+.price-container.animate {
+  opacity: 1;
+}
+
+.main-title {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 40px;
+  font-weight: bold;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+  will-change: opacity, transform;
+}
+
+.main-title.animate {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .card-container {
   display: flex;
   justify-content: center;
   gap: 30px;
+  opacity: 0;
+  transition: opacity 0.8s ease 0.4s;
+  will-change: opacity;
+}
+
+.card-container.animate {
+  opacity: 1;
 }
 
 .price-card {
@@ -18,6 +47,15 @@
   padding: 40px 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   width: 452px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  will-change: opacity, transform;
+}
+
+.price-card.animate {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .price-card-title {
@@ -26,12 +64,30 @@
   margin-bottom: 33px;
   font-weight: bold;
   text-transform: uppercase;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.6s ease 0.6s, transform 0.6s ease 0.6s;
+  will-change: opacity, transform;
+}
+
+.price-card-title.animate {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .button-group {
   display: flex;
   gap: 10px;
   margin-bottom: 30px;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.6s ease 0.8s, transform 0.6s ease 0.8s;
+  will-change: opacity, transform;
+}
+
+.button-group.animate {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .price-btn {
@@ -44,21 +100,39 @@
   color: white;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
   margin-bottom: 100px;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.6s ease 1.0s, transform 0.6s ease 1.0s, background-color 0.3s ease, transform 0.3s ease;
+  will-change: opacity, transform;
+}
+
+.price-btn.animate {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .price-btn:hover {
   background-color: #a88530;
+  transform: translateY(-2px);
 }
 
 .price-btn.active {
   background-color: #775d21;
+  transform: scale(1.02);
 }
 
 .price-list {
   margin-top: 20px;
   margin-bottom: 40px;
+  opacity: 0;
+  transition: opacity 0.6s ease 1.2s;
+  will-change: opacity;
+}
+
+.price-list.animate {
+  opacity: 1;
 }
 
 .price-item {
@@ -66,6 +140,15 @@
   justify-content: space-between;
   align-items: center;
   padding: 30px 10px;
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: opacity, transform;
+}
+
+.price-item.animate {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .price-item:last-child {
@@ -81,12 +164,50 @@
   font-weight: 500;
 }
 
-@media (max-width: 1024px) {
-  .card-container {
-    flex-wrap: wrap;
-    gap: 25px;
+/* Отключаем анимации для пользователей, которые предпочитают reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .price-container,
+  .main-title,
+  .card-container,
+  .price-card,
+  .price-card-title,
+  .button-group,
+  .price-btn,
+  .price-list,
+  .price-item {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
   
+  .price-container.animate,
+  .main-title.animate,
+  .card-container.animate,
+  .price-card.animate,
+  .price-card-title.animate,
+  .button-group.animate,
+  .price-btn.animate,
+  .price-list.animate,
+  .price-item.animate {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  .price-btn:hover {
+    transform: none;
+  }
+  
+  .price-btn.active {
+    transform: none;
+  }
+}
+
+/* Медиа-запросы с адаптацией */
+@media (max-width: 1024px) {
+  .card-container{
+    flex-direction: column;
+    align-items: center;
+  }
   .price-card {
     width: 430px;
     padding: 35px 18px;
@@ -95,15 +216,17 @@
   .price-card-title {
     font-size: 32px;
   }
-  
+  .price-item {
+    padding: 25px 10px;
+  }
   .price-btn {
-    padding: 18px;
-    font-size: 22px;
+    padding: 16px;
+    font-size: 24px;
     margin-bottom: 90px;
   }
   
   .price-label {
-    font-size: 28px;
+    font-size: 26px;
   }
   
   .price-value {
@@ -140,11 +263,11 @@
   }
   
   .price-label {
-    font-size: 24px;
+    font-size: 28px;
   }
   
   .price-value {
-    font-size: 20px;
+    font-size: 24px;
   }
   
   .price-item {
@@ -203,5 +326,68 @@
   
   .price-item {
     padding: 15px 8px;
+  }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 320px) {
+  .main-title {
+    font-size: 24px;
+  }
+  
+  .price-card-title {
+    font-size: 22px;
+  }
+  
+  .price-btn {
+    padding: 12px;
+    font-size: 16px;
+  }
+  
+  .price-label {
+    font-size: 18px;
+  }
+  
+  .price-value {
+    font-size: 16px;
+  }
+}
+
+/* Для очень больших экранов */
+@media (min-width: 1440px) {
+  .price-container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .main-title {
+    font-size: 40px;
+  }
+  
+  .price-card-title {
+    font-size: 38px;
+  }
+  
+  .price-btn {
+    font-size: 26px;
+  }
+  
+  .price-label {
+    font-size: 34px;
+  }
+  
+  .price-value {
+    font-size: 30px;
+  }
+}
+
+/* Для устройств с тач-скрином */
+@media (hover: none) and (pointer: coarse) {
+  .price-btn:hover {
+    transform: none;
+  }
+  
+  .price-btn.active {
+    transform: none;
   }
 }

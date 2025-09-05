@@ -1,0 +1,398 @@
+/* Добавляем стили для main-title */
+.training-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.main-title {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  will-change: opacity, transform;
+}
+
+.main-title.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.form-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    overflow: hidden;  
+    border: 1px solid #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.8s ease, transform 0.8s ease;
+    margin: 30px 20px;
+    max-width: 100%;
+    opacity: 0;
+    will-change: opacity, transform;
+}
+
+.form-card-reverse {
+    flex-direction: column;
+}
+
+/* Анимация для левой стороны */
+.form-card:not(.form-card-reverse) {
+    transform: translateX(-100px);
+}
+
+.form-card:not(.form-card-reverse).animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Анимация для правой стороны */
+.form-card-reverse {
+    transform: translateX(100px);
+}
+
+.form-card-reverse.animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.form-card:hover {
+    transform: translateY(-4px) translateX(0) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.form-card-image {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.form-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.form-card-content {
+    padding: 30px 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-card-title {
+    font-size: 24px;
+    margin-bottom: 12px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.form-card-description {
+    line-height: 1.5;
+    margin-bottom: 20px;
+    opacity: 0.8;
+    text-align: center;
+}
+
+/* Отключаем анимации для пользователей, которые предпочитают reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .main-title,
+    .form-card,
+    .form-card-reverse {
+        transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    
+    .main-title.animate,
+    .form-card.animate,
+    .form-card-reverse.animate {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    
+    .form-card:hover {
+        transform: none !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 480px) {
+    .training-container {
+        padding: 20px 15px;
+    }
+    
+    .main-title {
+        font-size: 28px;
+        margin-bottom: 30px;
+        transform: translateY(20px);
+    }
+    
+    .form-card,
+    .form-card-reverse {
+        margin: 15px 10px;
+        border-radius: 12px;
+        transform: translateY(30px) !important;
+    }
+
+    .form-card.animate,
+    .form-card-reverse.animate {
+        transform: translateY(0) !important;
+    }
+
+    .form-card-image {
+        height: 180px;
+    }
+
+    .form-card-content {
+        padding: 20px 12px;
+    }
+
+    .form-card-title {
+        font-size: 18px;
+    }
+
+    .form-card-description {
+        font-size: 13px;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .training-container {
+        padding: 30px 20px;
+    }
+    
+    .main-title {
+        font-size: 32px;
+        transform: translateY(25px);
+    }
+    
+    .form-card,
+    .form-card-reverse {
+        margin: 15px 10px;
+        border-radius: 12px;
+        transform: translateY(40px) !important;
+    }
+
+    .form-card.animate,
+    .form-card-reverse.animate {
+        transform: translateY(0) !important;
+    }
+
+    .form-card-image {
+        height: 200px;
+    }
+
+    .form-card-content {
+        padding: 25px 15px;
+    }
+
+    .form-card-title {
+        font-size: 20px;
+    }
+
+    .form-card-description {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .training-container {
+        padding: 40px 30px;
+    }
+    
+    .main-title {
+        font-size: 34px;
+    }
+    
+    .form-card {
+        flex-direction: row;
+        margin: 40px 30px;
+        height: 350px;
+        transform: translateX(-100px);
+    }
+
+    .form-card-reverse {
+        flex-direction: row-reverse;
+        transform: translateX(100px);
+    }
+
+    .form-card.animate {
+        transform: translateX(0);
+    }
+
+    .form-card-reverse.animate {
+        transform: translateX(0);
+    }
+
+    .form-card-image {
+        width: 50%;
+        height: 100%;
+    }
+
+    .form-card-content {
+        width: 50%;
+        padding: 50px 40px;
+    }
+
+    .form-card-title {
+        font-size: 28px;
+        text-align: left;
+    }
+
+    .form-card-description {
+        font-size: 18px;
+        text-align: left;
+    }
+}
+
+@media (min-width: 1025px) {
+    .training-container {
+        padding: 50px 40px;
+    }
+    
+    .main-title {
+        font-size: 36px;
+    }
+    
+    .form-card {
+        flex-direction: row;
+        margin: 50px auto;
+        max-width: 1200px;
+        height: 400px;
+        transform: translateX(-100px);
+    }
+
+    .form-card-reverse {
+        flex-direction: row-reverse;
+        transform: translateX(100px);
+    }
+
+    .form-card.animate {
+        transform: translateX(0);
+    }
+
+    .form-card-reverse.animate {
+        transform: translateX(0);
+    }
+
+    .form-card-image {
+        width: 50%;
+        height: 100%;
+    }
+
+    .form-card-content {
+        width: 50%;
+        padding: 108px 60px;
+    }
+
+    .form-card-title {
+        font-size: 32px;
+        text-align: left;
+    }
+
+    .form-card-description {
+        font-size: 20px;
+        text-align: left;
+    }
+}
+
+@media (min-width: 1280px) {
+    .training-container {
+        padding: 60px 50px;
+    }
+    
+    .main-title {
+        font-size: 38px;
+    }
+    
+    .form-card-content {
+        padding: 108px 80px;
+    }
+
+    .form-card-description {
+        font-size: 20px;
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 320px) {
+    .training-container {
+        padding: 15px 10px;
+    }
+    
+    .main-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+        transform: translateY(15px);
+    }
+    
+    .form-card,
+    .form-card-reverse {
+        margin: 10px 5px;
+        transform: translateY(20px) !important;
+    }
+
+    .form-card.animate,
+    .form-card-reverse.animate {
+        transform: translateY(0) !important;
+    }
+
+    .form-card-image {
+        height: 150px;
+    }
+
+    .form-card-content {
+        padding: 15px 10px;
+    }
+
+    .form-card-title {
+        font-size: 16px;
+    }
+
+    .form-card-description {
+        font-size: 12px;
+    }
+}
+
+/* Для очень больших экранов */
+@media (min-width: 1440px) {
+    .training-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 70px 60px;
+    }
+    
+    .main-title {
+        font-size: 40px;
+    }
+    
+    .form-card {
+        height: 450px;
+    }
+    
+    .form-card-content {
+        padding: 120px 100px;
+    }
+    
+    .form-card-title {
+        font-size: 34px;
+    }
+    
+    .form-card-description {
+        font-size: 22px;
+    }
+}
+
+/* Для устройств с тач-скрином */
+@media (hover: none) and (pointer: coarse) {
+    .form-card:hover {
+        transform: none !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+}

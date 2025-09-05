@@ -4,7 +4,9 @@ const ReviewsCard = ({
   name, 
   date, 
   rating, 
-  text 
+  text,
+  isVisible = false,
+  delay = 0
 }) => {
   const getInitials = (name) => {
     if (!name) return "?"; 
@@ -18,7 +20,10 @@ const ReviewsCard = ({
   };
 
   return (
-    <div className="reviews-card">
+    <div 
+      className={`reviews-card ${isVisible ? 'animate' : ''}`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
       <div className="reviews-card-header">
         <div className="reviews-avatar">
           <span>{getInitials(name)}</span>

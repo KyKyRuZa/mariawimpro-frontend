@@ -17,19 +17,18 @@ const MainPage = () => {
   return (
     <>
       <Header />
-      <WelcomeScreen />
-
-      <section id="forma-obucheniya"><TrainingPage /></section>
-      <section id="o-nas"><About /></section>
-      <section><Advantage /></section>
-      <section id="trenery"><CoachesPage /></section>
-      <section id="prays"><PricingPage /></section>
-      <section id="novosti"><NewsPage /></section>
-      <section><ReviewsPage /></section>
-      {/* <section><Attributes/></section>
-      <section><Certificates/></section> */}
-      <section id="kontakty"><MapPage /></section>
-       <BotWidget /> 
+        <WelcomeScreen />
+        <section id="forma-obucheniya"><TrainingPage /></section>
+        <section id="o-nas"><About /></section>
+        <section><Advantage /></section>
+        <section id="trenery"><CoachesPage /></section> 
+        <section id="prays"><PricingPage /></section>
+        <section id="novosti"><NewsPage /></section>
+        <section><ReviewsPage /></section> 
+        {/* <section><Attributes/></section> */}
+        {/* <section><Certificates/></section> */}
+        {/* <section id="kontakty"><MapPage /></section> */}
+        <BotWidget /> 
       <Footer />
     </>
   );

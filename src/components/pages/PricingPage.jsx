@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PriceCard from "../card/PriceCard";
 import { tariffsApi } from '../../api/tariffs';
+import useInView from '../../hooks/useInView';
+import '../../styles/card/price.css';
 
 const PricePage = () => {
   const [groupPrices, setGroupPrices] = useState({ priceList1: [], priceList2: [] });
@@ -8,6 +10,10 @@ const PricePage = () => {
   const [splitPrices, setSplitPrices] = useState({ priceList1: [], priceList2: [] });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [ref, isInView] = useInView({
+    threshold: 0.2,
+    rootMargin: '0px 0px -50px 0px'
+  });
 
   const sortTariffsByDuration = (tariffs) => {
     const order = ['1 тренировка', '4 тренировки', '7 тренировок', '8 тренировок', '10 тренировок'];
@@ -87,15 +93,17 @@ const PricePage = () => {
   if (error) return <div className="error">Ошибка загрузки цен: {error}</div>;
 
   return (
-    <div className='price-container'>
-      <div className='main-title'>ПРАЙС ЛИСТ</div>
-      <div className='card-container'>
+    <div className={`price-container ${isInView ? 'animate' : ''}`} ref={ref}>
+      <div className={`main-title ${isInView ? 'animate' : ''}`}>ПРАЙС ЛИСТ</div>
+      <div className={`card-container ${isInView ? 'animate' : ''}`}>
         <PriceCard
           title="ГРУППОВЫЕ"
           button1="БОЛЬШАЯ"
           button2="МАЛАЯ"
           priceList1={groupPrices.priceList1}
           priceList2={groupPrices.priceList2}
+          isVisible={isInView}
+          delay={0}
         />
 
         <PriceCard
@@ -104,6 +112,8 @@ const PricePage = () => {
           button2="45 мин"
           priceList1={individualPrices.priceList1}
           priceList2={individualPrices.priceList2}
+          isVisible={isInView}
+          delay={200}
         />
 
         <PriceCard
@@ -112,6 +122,8 @@ const PricePage = () => {
           button2="45 мин"
           priceList1={splitPrices.priceList1}
           priceList2={splitPrices.priceList2}
+          isVisible={isInView}
+          delay={400}
         />
       </div>
     </div>

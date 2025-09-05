@@ -1,14 +1,12 @@
-import React from 'react';
-
-const AdvantageCard = ({ 
-  title, 
-  description 
-}) => {
+const AdvantageCard = ({ title, description, isVisible = false, delay = 0 }) => {
   return (
-    <div className="advantage-card">
+    <div 
+      className={`advantage-card ${isVisible ? 'animate' : ''}`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
       <div className="advantage-card-content">
-        {title && <h3 className="advantage-card-title">{title}</h3>}
-        {description && <p className="advantage-card-description">{description}</p>}
+        <h3 className="advantage-card-title">{title}</h3>
+        <p className="advantage-card-description">{description}</p>
       </div>
     </div>
   );

@@ -9,6 +9,15 @@
     width: 100%;
     max-width: 976px;
     margin: 100px 0px 40px 0px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    will-change: opacity, transform;
+}
+
+.slogan.animate {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .title {
@@ -51,102 +60,217 @@
     margin-bottom: 200px;
     cursor: pointer;
     transition: opacity 0.3s ease;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+    will-change: opacity, transform;
+}
+
+.welcome-btn.animate {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .welcome-btn:hover {
     opacity: 0.8;
 }
 
-/* Медиа-запросы для адаптивности */
+/* Отключаем анимации для пользователей, которые предпочитают reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .slogan,
+    .welcome-btn {
+        transition: none;
+        opacity: 1;
+        transform: none;
+    }
+    
+    .slogan.animate,
+    .welcome-btn.animate {
+        opacity: 1;
+        transform: none;
+    }
+}
+
 /* 1. Мобильные устройства (маленькие) — до 480px */
 @media (max-width: 480px) {
-  .welcome-container {
-    margin: 0;
-  }
+    .welcome-container {
+        margin: 0;
+    }
 
-  .slogan {
-    margin: 80px 0 30px 0;
-  }
+    .slogan {
+        margin: 80px 0 30px 0;
+        transform: translateY(30px);
+    }
 
-  .title {
-    font-size: 28px;
-  }
+    .title {
+        font-size: 28px;
+    }
 
-  .subtitle {
-    font-size: 14px;
-    margin-top: 15px;
-  }
+    .subtitle {
+        font-size: 14px;
+        margin-top: 15px;
+    }
 
-  .welcome-btn {
-    padding: 14px 28px;
-    margin-bottom: 150px;
-    font-size: 16px;
-  }
+    .welcome-btn {
+        padding: 14px 28px;
+        margin-bottom: 150px;
+        font-size: 16px;
+        transform: translateY(20px);
+        transition: opacity 0.7s ease 0.2s, transform 0.7s ease 0.2s;
+    }
 }
 
 /* 2. Мобильные устройства (средние и большие) — от 481px до 768px */
 @media (min-width: 481px) and (max-width: 768px) {
-  .slogan {
-    margin: 120px 0 35px 0;
-  }
+    .slogan {
+        margin: 120px 0 35px 0;
+        transform: translateY(40px);
+    }
 
-  .title {
-    font-size: 44px;
-  }
+    .title {
+        font-size: 44px;
+    }
 
-  .subtitle {
-    font-size: 22px;
-    margin-top: 12px;
-  }
+    .subtitle {
+        font-size: 22px;
+        margin-top: 12px;
+    }
 
-  .welcome-btn {
-    font-size: 16px;
-    padding: 16px 32px;
-    margin-bottom: 200px;
-  }
+    .welcome-btn {
+        font-size: 16px;
+        padding: 16px 32px;
+        margin-bottom: 200px;
+        transform: translateY(25px);
+        transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+    }
 }
 
 /* 3. Планшеты (альбом) и маленькие ноутбуки — от 769px до 1024px */
 @media (min-width: 769px) and (max-width: 1024px) {
-  .slogan {
-    margin: 150px 0 40px 0;
-  }
+    .slogan {
+        margin: 150px 0 40px 0;
+        transform: translateY(45px);
+    }
 
-  .title {
-    font-size: 62px;
-  }
+    .title {
+        font-size: 62px;
+    }
 
-  .subtitle {
-    font-size: 31px;
-  }
+    .subtitle {
+        font-size: 31px;
+    }
 
-  .welcome-btn {
-    font-size: 18px;
-    padding: 18px 38px;
-    margin-bottom: 280px;
-  }
+    .welcome-btn {
+        font-size: 18px;
+        padding: 18px 38px;
+        margin-bottom: 280px;
+        transform: translateY(30px);
+        transition: opacity 0.9s ease 0.4s, transform 0.9s ease 0.4s;
+    }
 }
 
 /* 4. Настольные компьютеры — от 1025px */
 @media (min-width: 1025px) {
-  .slogan {
-    margin: 200px 0 40px 0;
-    width: 976px;
-  }
+    .slogan {
+        margin: 200px 0 40px 0;
+        width: 976px;
+        transform: translateY(50px);
+    }
 
-  .title {
-    font-size: 64px;
-    padding: 0;
-  }
+    .title {
+        font-size: 64px;
+        padding: 0;
+    }
 
-  .subtitle {
-    font-size: 32px;
-    padding: 0;
-  }
+    .subtitle {
+        font-size: 32px;
+        padding: 0;
+    }
 
-  .welcome-btn {
-    font-size: 20px;
-    padding: 20px 44px;
-    margin-bottom: 356px;
-  }
+    .welcome-btn {
+        font-size: 20px;
+        padding: 20px 44px;
+        margin-bottom: 356px;
+        transform: translateY(30px);
+        transition: opacity 1s ease 0.5s, transform 1s ease 0.5s;
+    }
+}
+
+/* 5. Очень большие экраны — от 1440px */
+@media (min-width: 1440px) {
+    .slogan {
+        margin: 250px 0 50px 0;
+    }
+
+    .title {
+        font-size: 72px;
+    }
+
+    .subtitle {
+        font-size: 36px;
+    }
+
+    .welcome-btn {
+        font-size: 22px;
+        padding: 22px 48px;
+        margin-bottom: 400px;
+    }
+}
+
+/* 6. Портретные планшеты и мобильные в альбомной ориентации */
+@media (max-width: 768px) and (orientation: landscape) {
+    .slogan {
+        margin: 60px 0 25px 0;
+    }
+
+    .welcome-btn {
+        margin-bottom: 120px;
+    }
+}
+
+/* 7. Высокие экраны (соотношение сторон больше чем 16:9) */
+@media (min-height: 1000px) {
+    .slogan {
+        margin: 150px 0 50px 0;
+    }
+
+    .welcome-btn {
+        margin-bottom: 300px;
+    }
+}
+
+/* 8. Очень маленькие экраны (менее 320px) */
+@media (max-width: 320px) {
+    .slogan {
+        margin: 60px 0 20px 0;
+        transform: translateY(20px);
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    .subtitle {
+        font-size: 12px;
+        margin-top: 10px;
+    }
+
+    .welcome-btn {
+        padding: 12px 24px;
+        margin-bottom: 100px;
+        font-size: 14px;
+        transform: translateY(15px);
+        transition: opacity 0.6s ease 0.1s, transform 0.6s ease 0.1s;
+    }
+}
+
+/* 10. Для устройств с тач-скрином (уменьшаем hover-эффекты) */
+@media (hover: none) and (pointer: coarse) {
+    .welcome-btn:hover {
+        opacity: 1;
+    }
+    
+    .welcome-btn:active {
+        opacity: 0.8;
+    }
 }

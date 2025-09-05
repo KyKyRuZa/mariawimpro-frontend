@@ -1,3 +1,5 @@
+/* Убираем keyframes и заменяем на transitions */
+
 .about-container {
   display: flex;
   flex-direction: column;
@@ -10,17 +12,42 @@
   font-weight: 700;
   letter-spacing: 0.5px;
   margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  will-change: opacity, transform;
+}
+
+.main-title.animate {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .about-content {
   display: flex;
   flex-direction: column;
   gap: 30px;
+  opacity: 0;
+  transition: opacity 0.8s ease 0.2s;
+  will-change: opacity;
+}
+
+.about-content.animate {
+  opacity: 1;
 }
 
 .about-text {
   font-size: 16px;
   line-height: 1.5;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s;
+  will-change: opacity, transform;
+}
+
+.about-text.animate {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .about-text p {
@@ -42,6 +69,15 @@
 .about-image {
   display: flex;
   justify-content: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease 0.6s, transform 0.8s ease 0.6s;
+  will-change: opacity, transform;
+}
+
+.about-image.animate {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .about-image img {
@@ -51,8 +87,35 @@
   border-radius: 15px;
   box-shadow: 0px 4px 15px rgba(0,0,0,0.3);
   object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.about-image img:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 6px 20px rgba(0,0,0,0.4);
+}
+
+/* Отключаем анимации для пользователей, которые предпочитают reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .main-title,
+  .about-content,
+  .about-text,
+  .about-image {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  .main-title.animate,
+  .about-content.animate,
+  .about-text.animate,
+  .about-image.animate {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Адаптивные медиа-запросы */
 @media (max-width: 480px) {
   .about-container {
     padding: 0 15px;
@@ -61,6 +124,7 @@
   .main-title {
     font-size: 24px;
     margin-bottom: 15px;
+    transform: translateY(15px);
   }
 
   .about-content {
@@ -70,27 +134,20 @@
 
   .about-text {
     font-size: 14px;
-    line-height: 1.5;
-  }
-
-  .about-text p {
-    margin-bottom: 12px;
-  }
-
-  .about-text ul {
-    margin: 10px 0;
+    transform: translateY(15px);
   }
 
   .about-text ul li {
     font-size: 13px;
-    margin-bottom: 6px;
+  }
+
+  .about-image {
+    transform: translateY(15px);
   }
 
   .about-image img {
     height: 250px;
     max-width: 200px;
-    border-radius: 12px;
-    box-shadow: 0px 4px 12px rgba(0,0,0,0.25);
   }
 }
 
@@ -101,6 +158,7 @@
 
   .main-title {
     font-size: 28px;
+    transform: translateY(18px);
   }
 
   .about-content {
@@ -110,18 +168,20 @@
 
   .about-text {
     font-size: 16px;
-    line-height: 1.5;
+    transform: translateY(18px);
   }
 
   .about-text ul li {
     font-size: 15px;
   }
 
+  .about-image {
+    transform: translateY(18px);
+  }
+
   .about-image img {
     height: 300px;
     max-width: 250px;
-    border-radius: 15px;
-    box-shadow: 0px 4px 15px rgba(0,0,0,0.3);
   }
 }
 
@@ -132,6 +192,7 @@
 
   .main-title {
     font-size: 32px;
+    transform: translateY(20px);
   }
 
   .about-content {
@@ -142,13 +203,16 @@
   .about-text {
     font-size: 18px;
     line-height: 1.6;
+    transform: translateY(20px);
+  }
+
+  .about-image {
+    transform: translateY(20px);
   }
 
   .about-image img {
     height: 350px;
     max-width: 280px;
-    border-radius: 15px;
-    box-shadow: 0px 4px 15px rgba(0,0,0,0.3);
   }
 }
 
@@ -163,10 +227,22 @@
     flex: 1;
     font-size: 20px;
     line-height: 1.6;
+    transform: translateX(-30px);
+    transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s;
+  }
+
+  .about-text.animate {
+    transform: translateX(0);
   }
 
   .about-image {
     flex: 0 0 auto;
+    transform: translateX(30px);
+    transition: opacity 0.8s ease 0.6s, transform 0.8s ease 0.6s;
+  }
+
+  .about-image.animate {
+    transform: translateX(0);
   }
 
   .about-image img {
@@ -184,5 +260,70 @@
 
   .about-text {
     font-size: 24px;
+  }
+}
+
+/* Дополнительные медиа-запросы для очень маленьких экранов */
+@media (max-width: 320px) {
+  .about-container {
+    padding: 0 10px;
+  }
+
+  .main-title {
+    font-size: 22px;
+    margin-bottom: 10px;
+    transform: translateY(10px);
+  }
+
+  .about-content {
+    gap: 15px;
+  }
+
+  .about-text {
+    font-size: 13px;
+    transform: translateY(10px);
+  }
+
+  .about-text ul li {
+    font-size: 12px;
+  }
+
+  .about-image {
+    transform: translateY(10px);
+  }
+
+  .about-image img {
+    height: 200px;
+    max-width: 180px;
+  }
+}
+
+/* Для очень больших экранов */
+@media (min-width: 1440px) {
+  .about-container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .main-title {
+    font-size: 40px;
+  }
+
+  .about-text {
+    font-size: 26px;
+    line-height: 1.7;
+  }
+
+  .about-image img {
+    height: 450px;
+    max-width: 350px;
+  }
+}
+
+/* Для устройств с тач-скрином */
+@media (hover: none) and (pointer: coarse) {
+  .about-image img:hover {
+    transform: none;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.3);
   }
 }

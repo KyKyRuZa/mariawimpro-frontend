@@ -1,12 +1,18 @@
 import "../../styles/about.css";
-import coachImg from "../../styles/assets/maria-avatar.png"; 
+import coachImg from "../../styles/assets/maria-avatar.png";
+import useInView from '../../hooks/useInView';
 
 const About = () => {
+  const [ref, isInView] = useInView({
+    threshold: 0.2,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
   return (
-    <div className="about-container">
-      <h1 className="main-title">О НАС</h1>
-      <div className="about-content">
-        <div className="about-text">
+    <div className="about-container" ref={ref}>
+      <h1 className={`main-title ${isInView ? 'animate' : ''}`}>О НАС</h1>
+      <div className={`about-content ${isInView ? 'animate' : ''}`}>
+        <div className={`about-text ${isInView ? 'animate' : ''}`}>
           <p>
             Школа плавания <strong>MARIASWIMPRO</strong> основана в 2020 году группой
             бывших профессиональных спортсменов и дипломированных тренеров.
@@ -36,7 +42,7 @@ const About = () => {
             </ul>
             <p>Для каждой группы – индивидуальные программы. Мы не просто учим плавать, а воспитываем здоровых и уверенных в воде людей.</p>
         </div>
-        <div className="about-image">
+        <div className={`about-image ${isInView ? 'animate' : ''}`}>
           <img src={coachImg} alt="Наш тренер" />
         </div>
       </div>

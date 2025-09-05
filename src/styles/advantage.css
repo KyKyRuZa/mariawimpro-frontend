@@ -1,5 +1,31 @@
+/* Убираем keyframes и заменяем на transitions */
+
 .advantage-container {
   padding: 40px 20px;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  will-change: opacity;
+}
+
+.advantage-container.animate {
+  opacity: 1;
+}
+
+.main-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+  will-change: opacity, transform;
+}
+
+.main-title.animate {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .advantages-grid {
@@ -7,45 +33,151 @@
   flex-direction: column;
   gap: 20px;
 }
-.advantage-card{
-  max-width: 350px;
+
+.advantage-card {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: opacity, transform;
 }
+
+.advantage-card.animate {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.advantage-card-content {
+  border-radius: 16px;
+  padding: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
+
+.advantage-card-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.advantage-card-description {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}
+
 .row {
   display: flex;
   flex-direction: column;
   gap: 20px;
   justify-content: center;
+  align-items: center;
 }
 
+/* Центрирование для среднего ряда */
 .row.center {
   margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
-@media (max-width: 480px) {
+/* Отключаем анимации для пользователей, которые предпочитают reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .advantage-container,
+  .main-title,
+  .advantage-card {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  .advantage-container.animate,
+  .main-title.animate,
+  .advantage-card.animate {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  .advantage-card-content:hover {
+    transform: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Адаптивные медиа-запросы */
+@media (max-width: 425px) {
+  .advantage-container {
+    padding: 30px 15px;
+  }
+
+  .main-title {
+    font-size: 24px;
+    margin-bottom: 30px;
+    transform: translateY(20px);
+  }
+
   .row {
     gap: 15px;
   }
 
   .row.center {
     margin-top: 10px;
+    gap: 15px;
+  }
+
+  .advantage-card-content {
+    padding: 20px;
+  }
+
+  .advantage-card-title {
+    font-size: 18px;
+  }
+
+  .advantage-card-description {
+    font-size: 14px;
   }
 }
 
-@media (min-width: 481px) and (max-width: 768px) {
+@media (min-width: 425px) and (max-width: 768px) {
   .advantage-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 50px 30px;
+    padding: 40px 25px;
+  }
+
+  .main-title {
+    font-size: 26px;
+    transform: translateY(25px);
   }
 
   .advantages-grid {
-    gap: 30px;
+    gap: 25px;
   }
 
   .row {
     flex-direction: column;
-    gap: 25px;
+    gap: 20px;
+     justify-content: flex-start; /* ← убрали center */
+    align-items: stretch;  
+  }
+
+  .row.center {
+    gap: 20px;
+     justify-content: flex-start; /* ← убрали center */
+    align-items: stretch;  
+  }
+
+  .advantage-card-content {
+    padding: 25px;
+  }
+
+  .advantage-card-title {
+    font-size: 20px;
+  }
+
+  .advantage-card-description {
+    font-size: 15px;
   }
 }
 
@@ -54,28 +186,175 @@
     padding: 50px 30px;
   }
 
+  .main-title {
+    font-size: 30px;
+    transform: translateY(30px);
+  }
+
   .advantages-grid {
     gap: 30px;
   }
 
   .row {
     flex-direction: row;
-    gap: 25px;
+    gap: 20px;
+  }
+
+  .row.center {
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .advantage-card {
+    flex: 1;
+    min-width: 250px;
+    max-width: 300px;
+  }
+
+  .advantage-card-content {
+    padding: 0px;
+  }
+
+  .advantage-card-title {
+    font-size: 21px;
+  }
+
+  .advantage-card-description {
+    font-size: 16px;
   }
 }
 
 @media (min-width: 1025px) {
   .advantage-container {
-    padding: 50px 30px;
+    padding: 60px 40px;
+  }
+
+  .main-title {
+    font-size: 32px;
+    margin-bottom: 50px;
+    transform: translateY(30px);
   }
 
   .advantages-grid {
-    gap: 20px;
+    gap: 25px;
   }
 
   .row {
     flex-direction: row;
-    gap: 16px;
+    gap: 20px;
     flex-wrap: nowrap;
+    justify-content: center;
+  }
+
+  .row.center {
+    gap: 20px;
+    justify-content: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .advantage-card {
+    flex: 1;
+    min-width: 280px;
+    max-width: 350px;
+  }
+
+  .advantage-card-title {
+    font-size: 22px;
+  }
+
+  .advantage-card-description {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .advantage-container {
+    padding: 70px 50px;
+  }
+
+  .main-title {
+    font-size: 36px;
+  }
+
+  .row.center {
+    max-width: 900px;
+  }
+
+  .advantage-card {
+    min-width: 300px;
+    max-width: 380px;
+  }
+
+  .advantage-card-title {
+    font-size: 24px;
+  }
+
+  .advantage-card-description {
+    font-size: 17px;
+  }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 320px) {
+  .advantage-container {
+    padding: 20px 10px;
+  }
+
+  .main-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+    transform: translateY(15px);
+  }
+
+  .row {
+    gap: 12px;
+  }
+
+  .row.center {
+    margin-top: 8px;
+    gap: 12px;
+  }
+
+  .advantage-card-content {
+    padding: 18px;
+  }
+
+  .advantage-card-title {
+    font-size: 16px;
+  }
+
+  .advantage-card-description {
+    font-size: 13px;
+  }
+}
+
+/* Для очень больших экранов */
+@media (min-width: 1440px) {
+  .advantage-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 80px 60px;
+  }
+
+  .main-title {
+    font-size: 40px;
+  }
+
+  .advantage-card-title {
+    font-size: 26px;
+  }
+
+  .advantage-card-description {
+    font-size: 18px;
+  }
+}
+
+/* Для устройств с тач-скрином */
+@media (hover: none) and (pointer: coarse) {
+  .advantage-card-content:hover {
+    transform: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 }
