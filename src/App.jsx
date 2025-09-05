@@ -4,6 +4,8 @@ import CoachInfoPage from './page/public/CoachInfoPage';
 import AdminPanel from './page/private/AdminPanel';
 import LoginForm from './components/auth/LoginForm';
 import NotFound from './page/public/NotFound';
+import Agreement from './components/pages/Agreement';
+import PolitikaKonfidencialnosti from './components/pages/Сonfederacy'
 import './styles/global.css';
 
 const AppContent = () => {
@@ -15,6 +17,8 @@ const AppContent = () => {
       <Route path="/coaches/:coachId" element={<CoachInfoPage />} />
       <Route path="/admin/*" element={<AdminPanel />} />
       <Route path="/login" element={<LoginForm />} />
+      <Route path="/dogovor-oferty" element={<Agreement />} />
+      <Route path="/politika-konfidencialnosti" element={<PolitikaKonfidencialnosti />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

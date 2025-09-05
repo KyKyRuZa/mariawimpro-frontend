@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faVk, faTelegram } from '@fortawesome/free-brands-svg-icons';
 
 const Footer = () => {
-    const navItems = [
+  const navItems = [
     { id: 'forma-obucheniya', label: 'Форма обучения' },
     { id: 'o-nas', label: 'О нас' },
     { id: 'trenery', label: 'Тренеры' },
@@ -56,6 +56,18 @@ const Footer = () => {
 
       <div className="footer-copyright">
         <p>© 2025 MARIASWIMPRO. Все права защищены</p>
+        <ul className="footer-legal-links">
+          <li>
+            <a href="/politika-konfidencialnosti" className="footer-nav-link">
+              Политика конфиденциальности
+            </a>
+          </li>
+          <li>
+            <a href="/dogovor-oferty" className="footer-nav-link">
+              Договор оферты
+            </a>
+          </li>
+        </ul>
       </div>
     </footer>
   );
