@@ -1,3 +1,7 @@
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { scroller } from 'react-scroll';
+
 import Header from "../../components/UI/Header";
 import Footer from "../../components/UI/Footer";
 
@@ -13,22 +17,48 @@ import MapPage from "../../components/pages/MapPage";
 import BotWidget from '../../components/UI/BotWidget';
 import Attributes from "../../components/pages/Attributes";
 import Certificates from "../../components/pages/Certificates";
+
 const MainPage = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+  const { scrollTo, scrollToTop } = location.state || {};
+
+  if (scrollToTop) {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  } else if (scrollTo) {
+    scroller.scrollTo(scrollTo, {
+      duration: 800,
+      smooth: 'easeInOutQuint',
+      offset: -90,
+    });
+  } else {
+    scroller.scrollTo('forma-obucheniya', {
+      duration: 800,
+      smooth: 'easeInOutQuint',
+      offset: -90,
+    });
+  }
+}, []);
+
   return (
     <>
       <Header />
-        <WelcomeScreen />
-        <section id="forma-obucheniya"><TrainingPage /></section>
-        <section id="o-nas"><About /></section>
-        <section><Advantage /></section>
-        <section id="trenery"><CoachesPage /></section> 
-        <section id="prays"><PricingPage /></section>
-        <section id="novosti"><NewsPage /></section>
-        <section><ReviewsPage /></section> 
-        {/* <section><Attributes/></section> */}
-        {/* <section><Certificates/></section> */}
-        {/* <section id="kontakty"><MapPage /></section> */}
-        <BotWidget /> 
+      <WelcomeScreen />
+      <section id="forma-obucheniya"><TrainingPage /></section>
+      <section id="o-nas"><About /></section>
+      <section><Advantage /></section>
+      <section id="trenery"><CoachesPage /></section>
+      <section id="prays"><PricingPage /></section>
+      <section id="novosti"><NewsPage /></section>
+      <section><ReviewsPage /></section>
+      {/* <section><Attributes/></section> */}
+      {/* <section><Certificates/></section> */}
+      <section id="kontakty"><MapPage /></section>
+      <BotWidget />
       <Footer />
     </>
   );
