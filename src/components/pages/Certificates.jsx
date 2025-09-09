@@ -2,12 +2,12 @@ import '../../styles/gift.css';
 import gift from '../../styles/assets/gift.jpg';
 import useInView from '../../hooks/useInView';
 
-
 const Certificates = () => {
   const [ref, isInView] = useInView({
     threshold: 0.2,
     rootMargin: '0px 0px -50px 0px'
   });
+  
   const openBot = () => {
     window.open('https://t.me/mariaswimpro_bot', '_blank');
   };
@@ -25,7 +25,6 @@ const Certificates = () => {
               src={gift}
               alt="Подарочный сертификат на 4 тренировки по плаванию"
               className={`certificate-photo ${isInView ? 'animate' : ''}`}
-              isInView={isInView}
             />
           </div>
           
@@ -40,6 +39,11 @@ const Certificates = () => {
             <button className={`certificate-button ${isInView ? 'animate' : ''}`} onClick={openBot}>
               ЗАКАЗАТЬ СЕРТИФИКАТ
             </button>
+            <ul className={`certificate-condition ${isInView ? 'animate' : ''}`}>
+              <li>Скидка 10%</li>
+              <li>Подарите другу или родственнику</li>
+              <li>Подарите на день рождения</li>
+            </ul>
           </div>
         </div>
       </main>
