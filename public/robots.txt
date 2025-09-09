@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+
+Host: https://mariaswimpro.ru
+Sitemap: https://mariaswimpro.ru/sitemap.xml
