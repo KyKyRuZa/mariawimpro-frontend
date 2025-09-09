@@ -115,7 +115,27 @@
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
+.cookies-not-accepted {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
 
+.cookies-not-accepted h3 {
+  color: #e74c3c;
+  margin-bottom: 15px;
+}
+
+.cookies-not-accepted p {
+  color: #666;
+  line-height: 1.5;
+}
 /* 1. Мобильные устройства (маленькие и средние) — до 768px */
 @media (max-width: 768px) {
   .mapContainer {

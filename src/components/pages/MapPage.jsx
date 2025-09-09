@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useCookie } from '../../context/CookieContext';
 import '../../styles/map.css';
 
 const MapPage = () => {
@@ -7,6 +8,8 @@ const MapPage = () => {
   const [placemarks, setPlacemarks] = useState({});
   const [activePool, setActivePool] = useState(null);
   const [mapLoaded, setMapLoaded] = useState(false);
+  const [mapError, setMapError] = useState(false);
+  const { cookiesAccepted } = useCookie();
 
   const locations = {
     'ibragimova': [55.822225, 49.092921], // A-fitness
@@ -15,11 +18,26 @@ const MapPage = () => {
     'hakima': [55.816713, 49.149713]      // Дворец водных видов спорта
   };
 
-  // Загрузка API Яндекс.Карт
+  // Загрузка API Яндекс.Карт только если cookies приняты
   useEffect(() => {
+    if (!cookiesAccepted) {
+      // Сбрасываем состояние карты если cookies не приняты
+      if (mapInstance.current) {
+        try {
+          mapInstance.current.destroy();
+        } catch (e) {
+          console.error('Error destroying map:', e);
+        }
+        mapInstance.current = null;
+      }
+      setMapLoaded(false);
+      return;
+    }
+
     // Проверяем, не загружено ли API уже
     if (window.ymaps) {
-      initMap(window.ymaps);
+      // Даем время на рендеринг DOM элемента
+      setTimeout(() => initMap(window.ymaps), 100);
       return;
     }
 
@@ -29,12 +47,14 @@ const MapPage = () => {
     
     script.onload = () => {
       window.ymaps.ready(() => {
-        initMap(window.ymaps);
+        // Даем время на рендеринг DOM элемента
+        setTimeout(() => initMap(window.ymaps), 100);
       });
     };
 
     script.onerror = () => {
       console.error('Failed to load Yandex Maps API');
+      setMapError(true);
     };
 
     document.head.appendChild(script);
@@ -42,59 +62,87 @@ const MapPage = () => {
     return () => {
       // Очистка при размонтировании компонента
       if (mapInstance.current) {
-        mapInstance.current.destroy();
+        try {
+          mapInstance.current.destroy();
+        } catch (e) {
+          console.error('Error destroying map:', e);
+        }
+        mapInstance.current = null;
       }
-      document.head.removeChild(script);
+      
+      // Удаляем скрипт только если он существует
+      if (script.parentNode) {
+        document.head.removeChild(script);
+      }
     };
-  }, []);
+  }, [cookiesAccepted]);
 
   // Инициализация карты
   const initMap = (ymaps) => {
-    const newMap = new ymaps.Map(mapRef.current, {
-      center: [55.815048, 49.106360],
-      zoom: 13,
-      controls: ['zoomControl'],
-    });
+    try {
+      // Дополнительная проверка существования элемента
+      if (!mapRef.current) {
+        console.error('Map container element does not exist during init');
+        setMapError(true);
+        return;
+      }
 
-    const newPlacemarks = {};
-
-    // Создаем метки для каждого бассейна
-    Object.entries(locations).forEach(([id, coords]) => {
-      const placemark = new ymaps.Placemark(coords, {
-        hintContent: getLocationName(id),
-        balloonContent: `
-          <b>${getLocationName(id)}</b><br>
-          ${getLocationAddress(id)}
-        `
-      }, {
-        preset: 'islands#blueSwimmingIcon'
+      const newMap = new ymaps.Map(mapRef.current, {
+        center: [55.815048, 49.106360],
+        zoom: 13,
+        controls: ['zoomControl'],
       });
 
-      newPlacemarks[id] = placemark;
-      newMap.geoObjects.add(placemark);
-    });
+      const newPlacemarks = {};
 
-    mapInstance.current = newMap;
-    setPlacemarks(newPlacemarks);
-    setMapLoaded(true);
+      // Создаем метки для каждого бассейна
+      Object.entries(locations).forEach(([id, coords]) => {
+        const placemark = new ymaps.Placemark(coords, {
+          hintContent: getLocationName(id),
+          balloonContent: `
+            <b>${getLocationName(id)}</b><br>
+            ${getLocationAddress(id)}
+          `
+        }, {
+          preset: 'islands#blueSwimmingIcon'
+        });
+
+        newPlacemarks[id] = placemark;
+        newMap.geoObjects.add(placemark);
+      });
+
+      mapInstance.current = newMap;
+      setPlacemarks(newPlacemarks);
+      setMapLoaded(true);
+      setMapError(false);
+    } catch (error) {
+      console.error('Error initializing map:', error);
+      setMapError(true);
+    }
   };
 
   // Функция для перемещения карты к выбранному бассейну
   const showOnMap = (locationId) => {
+    if (!cookiesAccepted || !mapInstance.current) return;
+    
     setActivePool(locationId);
     
     if (mapInstance.current && locations[locationId]) {
       const coords = locations[locationId];
       const placemark = placemarks[locationId];
 
-      mapInstance.current.setCenter(coords, 15, {
-        duration: 800,
-        flying: true
-      }).then(() => {
-        if (placemark) {
-          placemark.balloon.open();
-        }
-      });
+      try {
+        mapInstance.current.setCenter(coords, 15, {
+          duration: 800,
+          flying: true
+        }).then(() => {
+          if (placemark) {
+            placemark.balloon.open();
+          }
+        });
+      } catch (error) {
+        console.error('Error moving map:', error);
+      }
     }
   };
 
@@ -162,19 +210,31 @@ const MapPage = () => {
       </div>
       
       <div className="mapFrame">
-        {!mapLoaded && (
+        {!cookiesAccepted ? (
+          <div className="cookies-not-accepted">
+            <h3>Для отображения карты необходимо принять использование cookies</h3>
+            <p>Карта использует сервисы Яндекс, которые требуют вашего согласия на обработку данных</p>
+          </div>
+        ) : mapError ? (
+          <div className="map-error">
+            <h3>Ошибка загрузки карты</h3>
+            <p>Попробуйте обновить страницу или обратиться к администратору</p>
+          </div>
+        ) : !mapLoaded ? (
           <div className="mapLoading">
             <div className="loadingSpinner"></div>
             <p>Загрузка карты...</p>
           </div>
-        )}
+        ) : null}
+        
+        {/* Контейнер для карты всегда присутствует в DOM, но скрыт до загрузки */}
         <div 
           ref={mapRef} 
           className="mapIframe"
           style={{ 
             width: '100%', 
             height: '100%',
-            opacity: mapLoaded ? 1 : 0
+            display: mapLoaded ? 'block' : 'none'
           }}
         />
       </div>

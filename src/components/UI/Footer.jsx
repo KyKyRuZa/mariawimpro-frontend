@@ -55,7 +55,9 @@ const Footer = () => {
       </div>
 
       <div className="footer-copyright">
+        
         <p>© 2025 MARIASWIMPRO. Все права защищены</p>
+        <p>Настоящий сайт использует файлы cookie и аналогичные технологии для обеспечения работы сайта, анализа посещаемости и взаимодействия со сторонними сервисами</p>
         <ul className="footer-legal-links">
           <li>
             <a href="/politika-konfidencialnosti" className="footer-nav-link">
