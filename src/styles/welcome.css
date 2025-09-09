@@ -66,6 +66,12 @@
     will-change: opacity, transform;
 }
 
+.welcome-btn:hover {
+  background: #a88539;
+  box-shadow: 0 5px 15px rgba(189, 151, 67, 0.4);
+}
+
+
 .welcome-btn.animate {
     opacity: 1;
     transform: translateY(0);

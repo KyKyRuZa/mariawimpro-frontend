@@ -15,7 +15,6 @@ import NewsPage from "../../components/pages/NewsPage";
 import ReviewsPage from "../../components/pages/ReviewsPage";
 import MapPage from "../../components/pages/MapPage";
 import BotWidget from '../../components/UI/BotWidget';
-import Attributes from "../../components/pages/Attributes";
 import Certificates from "../../components/pages/Certificates";
 
 const MainPage = () => {
@@ -36,7 +35,7 @@ const MainPage = () => {
       offset: -90,
     });
   } else {
-    scroller.scrollTo('forma-obucheniya', {
+    scroller.scrollTo('welcome', {
       duration: 800,
       smooth: 'easeInOutQuint',
       offset: -90,
@@ -47,7 +46,7 @@ const MainPage = () => {
   return (
     <>
       <Header />
-      <WelcomeScreen />
+      <section id="welcome"><WelcomeScreen /></section>
       <section id="forma-obucheniya"><TrainingPage /></section>
       <section id="o-nas"><About /></section>
       <section><Advantage /></section>
@@ -55,8 +54,7 @@ const MainPage = () => {
       <section id="prays"><PricingPage /></section>
       <section id="novosti"><NewsPage /></section>
       <section><ReviewsPage /></section>
-      {/* <section><Attributes/></section> */}
-      {/* <section><Certificates/></section> */}
+      <section><Certificates/></section>
       <section id="kontakty"><MapPage /></section>
       <BotWidget />
       <Footer />

@@ -1,0 +1,294 @@
+.main-title {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 700;
+  opacity: 1;
+}
+
+.certificates-grid {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.certificate-wrapper {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  max-width: 900px;
+  background: #2F2F2F;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.certificate-image-container {
+  flex: 1;
+  max-width: 400px;
+}
+
+.certificate-photo {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.certificate-info {
+  flex: 1;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.info-title {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.info-description {
+  font-size: 1rem;
+  color: #cccccc;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.certificate-details {
+  margin-bottom: 30px;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: #2c3e50;
+  margin-right: 10px;
+  min-width: 80px;
+}
+
+.detail-value {
+  color: #666;
+  font-size: 1rem;
+}
+
+.certificate-button {
+  width: 100%;
+  padding: 15px 30px;
+  background: #BD9743;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.certificate-button:hover {
+  background: #a88539;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(189, 151, 67, 0.4);
+}
+
+.certificate-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(189, 151, 67, 0.3);
+}
+
+
+.certificate-wrapper.animate {
+  animation: fadeInUp 1s ease-out 0.2s forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.certificate-photo.animate {
+  animation: fadeInUp 0.8s ease-out 0.4s forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.info-title.animate {
+  animation: fadeInUp 0.8s ease-out 0.5s forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.info-description.animate {
+  animation: fadeInUp 0.8s ease-out 0.6s forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.certificate-button.animate {
+  animation: fadeInUp 0.8s ease-out 0.7s forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Отключаем анимации для пользователей, которые предпочитают reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .main-title.animate,
+  .certificate-wrapper.animate,
+  .certificate-photo.animate,
+  .info-title.animate,
+  .info-description.animate,
+  .certificate-button.animate {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Адаптивность для секции сертификатов */
+@media (max-width: 1024px) {
+  .certificate-wrapper {
+    flex-direction: column;
+    max-width: 600px;
+    gap: 30px;
+  }
+  
+  .certificate-image-container {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .certificates-grid {
+    gap: 30px;
+  }
+  
+  .certificate-wrapper {
+    padding: 20px;
+    gap: 25px;
+  }
+  
+  .info-title {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+  }
+  
+  .info-description {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
+  
+  .certificate-button {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-title {
+    font-size: 28px;
+  }
+  
+  .certificates-grid {
+    gap: 20px;
+  }
+  
+  .certificate-wrapper {
+    padding: 15px;
+    gap: 20px;
+    border-radius: 10px;
+  }
+  
+  .info-title {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+  }
+  
+  .info-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+  }
+  
+  .detail-item {
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .detail-label {
+    min-width: 70px;
+    font-size: 0.9rem;
+  }
+  
+  .detail-value {
+    font-size: 0.9rem;
+  }
+  
+  .certificate-button {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 320px) {
+  .main-title {
+    font-size: 24px;
+  }
+  
+  .certificate-wrapper {
+    padding: 12px;
+  }
+  
+  .info-title {
+    font-size: 1rem;
+  }
+  
+  .info-description {
+    font-size: 0.85rem;
+  }
+}
+
+/* Для устройств с тач-скрином (уменьшаем hover-эффекты) */
+@media (hover: none) and (pointer: coarse) {
+  .certificate-button:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .certificate-photo:hover {
+    transform: none;
+  }
+}
+
+/* Отключаем анимации для пользователей, которые предпочитают reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .certificate-photo,
+  .certificate-button {
+    transition: none;
+  }
+  
+  .certificate-button:hover {
+    transform: none;
+  }
+}

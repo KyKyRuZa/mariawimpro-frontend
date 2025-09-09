@@ -1,5 +1,3 @@
-/* Убираем keyframes и заменяем на transitions */
-
 .about-container {
   display: flex;
   flex-direction: column;

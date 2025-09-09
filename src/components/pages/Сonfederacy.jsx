@@ -7,22 +7,6 @@ const PolitikaKonfidencialnosti = () => {
       <div className="legal-container">
         <h1>ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</h1>
         <h2>Беляевой Марии Геннадьевны, зарегистрированной в качестве самозанятого</h2>
-        
-        {/* <div className="legal-header">
-          <table>
-            <tbody>
-              <tr>
-                <td className='left'><strong>Номер</strong></td>
-                <td>[ ]</td>
-              </tr>
-              <tr>
-                <td className='left'><strong>Дата составления</strong></td>
-                <td>[ ]</td>
-              </tr>
-            </tbody>
-          </table>
-        </div> */}
-
         <div className="legal-content">
           <h2>1. ОПРЕДЕЛЕНИЕ ТЕРМИНОВ</h2>
           <p><strong>1.1.</strong> Существующая на текущий момент политика конфиденциальности персональных данных (далее -- Политика конфиденциальности) работает со следующими понятиями:</p>

@@ -8,7 +8,6 @@ const MapPage = () => {
   const [activePool, setActivePool] = useState(null);
   const [mapLoaded, setMapLoaded] = useState(false);
 
-  // Координаты бассейнов
   const locations = {
     'ibragimova': [55.822225, 49.092921], // A-fitness
     'bondarenko': [55.833895, 49.107097], // Ватан

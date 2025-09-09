@@ -1,52 +1,47 @@
-// Certificates.jsx
-import React from 'react';
-import './Style.css';
+import '../../styles/gift.css';
+import gift from '../../styles/assets/gift.jpg';
+import useInView from '../../hooks/useInView';
+
 
 const Certificates = () => {
-  const certificates = [
-    {
-      id: 1,
-      title: 'Международный тренер по плаванию',
-      issuer: 'FINA Academy',
-      date: 'Март 2023',
-      valid: true,
-      img: '/certs/fina-cert.jpg',
-    },
-    {
-      id: 2,
-      title: 'Инструктор водной реабилитации',
-      issuer: 'Российская школа плавания',
-      date: 'Июнь 2022',
-      valid: true,
-      img: '/certs/rehab-cert.jpg',
-    },
-    {
-      id: 3,
-      title: 'Высшая квалификационная категория',
-      issuer: 'Министерство спорта РФ',
-      date: 'Октябрь 2024',
-      valid: true,
-      img: '/certs/rf-sport-cert.jpg',
-    },
-  ];
+  const [ref, isInView] = useInView({
+    threshold: 0.2,
+    rootMargin: '0px 0px -50px 0px'
+  });
+  const openBot = () => {
+    window.open('https://t.me/mariaswimpro_bot', '_blank');
+  };
 
   return (
-    <div className="certificates-container">
-    <h1 className="main-title">СЕРТИФИКАТЫ</h1>
+    <div className="certificates-container" ref={ref}>
+      <h1 className={`main-title ${isInView ? 'animate' : ''}`}>
+        ПОДАРОЧНЫЙ СЕРТИФИКАТ
+      </h1>
+
       <main className="certificates-grid">
-        {certificates.map((cert) => (
-          <div key={cert.id} className="cert-card">
-            <img src={cert.img} alt={cert.title} className="cert-image" />
-            <div className="cert-info">
-              <h3>{cert.title}</h3>
-              <p><strong>Выдан:</strong> {cert.issuer}</p>
-              <p><strong>Дата:</strong> {cert.date}</p>
-              <span className={`status ${cert.valid ? 'valid' : 'expired'}`}>
-                {cert.valid ? 'Действителен' : 'Просрочен'}
-              </span>
-            </div>
+        <div className={`certificate-wrapper ${isInView ? 'animate' : ''}`}>
+          <div className="certificate-image-container">
+            <img
+              src={gift}
+              alt="Подарочный сертификат на 4 тренировки по плаванию"
+              className={`certificate-photo ${isInView ? 'animate' : ''}`}
+              isInView={isInView}
+            />
           </div>
-        ))}
+          
+          <div className="certificate-info">
+            <h3 className={`info-title ${isInView ? 'animate' : ''}`}>
+              СЕРТИФИКАТ НА 4 ТРЕНИРОВКИ
+            </h3>
+            <p className={`info-description ${isInView ? 'animate' : ''}`}>
+              Идеальный подарок для тех, кто хочет научиться плавать или улучшить свою технику. 
+              Профессиональные тренировки с индивидуальным подходом.
+            </p>
+            <button className={`certificate-button ${isInView ? 'animate' : ''}`} onClick={openBot}>
+              ЗАКАЗАТЬ СЕРТИФИКАТ
+            </button>
+          </div>
+        </div>
       </main>
     </div>
   );
