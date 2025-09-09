@@ -55,7 +55,7 @@ const MainPage = () => {
       <section id="novosti"><NewsPage /></section>
       <section><ReviewsPage /></section>
       <section><Certificates/></section>
-      {/* <section id="kontakty"><MapPage /></section> */}
+      <section id="kontakty"><MapPage /></section>
       <BotWidget />
       <Footer />
     </>
