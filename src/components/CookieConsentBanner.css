@@ -4,7 +4,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: #2c3e50;
+  background: #2f2f2f;
   color: white;
   padding: 15px 20px;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
@@ -35,7 +35,7 @@
 
 .cookie-consent-content p a {
   color: #3498db;
-  text-decoration: underline;
+  text-decoration: none;
   margin: 0 5px;
 }
 
@@ -55,7 +55,7 @@
 }
 
 .cookie-consent-accept {
-  background: #27ae60;
+  background: #BD9743;
   color: white;
 }
 
