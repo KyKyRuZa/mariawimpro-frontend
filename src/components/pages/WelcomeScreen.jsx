@@ -7,7 +7,9 @@ const WelcomeScreen = () => {
         threshold: 0.2,
         rootMargin: '0px 0px -50px 0px'
     });
-
+    const openBot = () => {
+        window.open('https://t.me/mariaswimpro_bot', '_blank');
+    };
     return (
         <div ref={ref} className="welcome-container">
             <div className={`slogan ${isVisible ? 'animate' : ''}`}>
@@ -25,7 +27,7 @@ const WelcomeScreen = () => {
                 offset={-90}
                 duration={500}
             >
-                <button className={`welcome-btn ${isVisible ? 'animate' : ''}`}>
+                <button className={`welcome-btn ${isVisible ? 'animate' : ''}`} onClick={openBot}>
                     ЗАПИСАТЬСЯ
                 </button>
             </Link>
