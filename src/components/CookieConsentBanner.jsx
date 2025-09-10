@@ -1,4 +1,3 @@
-// components/CookieConsentBanner.jsx
 import React from 'react';
 import { useCookie } from '../context/CookieContext';
 import './CookieConsentBanner.css';
@@ -6,14 +5,11 @@ import './CookieConsentBanner.css';
 const CookieConsentBanner = () => {
   const { cookiesAccepted, cookiesLoaded, acceptCookies, rejectCookies } = useCookie();
 
-  console.log('Banner state:', { cookiesAccepted, cookiesLoaded });
 
-  // Не показывать баннер, пока данные не загружены
   if (!cookiesLoaded) {
     return null;
   }
   
-  // Не показывать баннер, если cookies уже приняты
   if (cookiesAccepted) {
     return null;
   }

@@ -19,18 +19,9 @@ const WelcomeScreen = () => {
                 </div>
                 <div className="subtitle"> Школа плавания для новичков и продвинутых пловцов </div>
             </div>
-            
-            <Link 
-                to="prays" 
-                spy={true} 
-                smooth={true} 
-                offset={-90}
-                duration={500}
-            >
-                <button className={`welcome-btn ${isVisible ? 'animate' : ''}`} onClick={openBot}>
-                    ЗАПИСАТЬСЯ
-                </button>
-            </Link>
+            <button className={`welcome-btn ${isVisible ? 'animate' : ''}`} onClick={openBot}>
+                ЗАПИСАТЬСЯ
+            </button>
         </div>
     )
 }
