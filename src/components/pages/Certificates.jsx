@@ -30,7 +30,7 @@ const Certificates = () => {
           
           <div className="certificate-info">
             <h3 className={`info-title ${isInView ? 'animate' : ''}`}>
-              СЕРТИФИКАТ НА ПЕРСОНАЛЬЬНЫЕ ТРЕНИРОВКИ
+              СЕРТИФИКАТ НА ПЕРСОНАЛЬНЫЕ ТРЕНИРОВКИ
             </h3>
             <p className={`info-description ${isInView ? 'animate' : ''}`}>
               Идеальный подарок для тех, кто хочет научиться плавать или улучшить свою технику. 
