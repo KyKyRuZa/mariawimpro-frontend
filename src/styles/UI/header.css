@@ -369,3 +369,22 @@
     font-size: 16px;
   }
 }
+
+@media (max-width: 1800px) {
+  .header-logo .logo {
+    width: 70px;
+    height: 70px;
+  }
+    .header-logo div {
+    font-size: 22px;
+    line-height: 32px;
+  }
+  
+  .header-nav a,
+  .header-phone {
+    font-size: 17px;
+  }
+  .header-container{
+    margin: 0px 100px !important;
+  }
+}
