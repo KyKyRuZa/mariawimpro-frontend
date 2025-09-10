@@ -11,59 +11,35 @@ const Header = () => {
   const location = useLocation();
 
   useEffect(() => {
-  if (location.pathname !== '/') return;
-
-  let observer = null;
-
-  const initObserver = () => {
-    const sections = document.querySelectorAll('section[id]');
-
-    observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { rootMargin: '-30% 0px -70% 0px' }
-    );
-
-    sections.forEach((section) => {
-      if (section.id) observer.observe(section);
-    });
-  };
-
-  initObserver();
-
-  return () => {
-    if (observer) {
-      observer.disconnect(); // Один вызов вместо множества unobserve
-    }
-  };
-}, [location.pathname]);
-
-  useEffect(() => {
     if (location.pathname !== '/') return;
 
-    const sections = document.querySelectorAll('section[id]');
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { rootMargin: '-30% 0px -70% 0px' } 
-    );
+    let observer = null;
 
-    sections.forEach((section) => {
-      if (section.id) observer.observe(section);
-    });
+    const initObserver = () => {
+      const sections = document.querySelectorAll('section[id]');
+
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setActiveSection(entry.target.id);
+            }
+          });
+        },
+        { rootMargin: '-30% 0px -70% 0px' }
+      );
+
+      sections.forEach((section) => {
+        if (section.id) observer.observe(section);
+      });
+    };
+
+    initObserver();
 
     return () => {
-      sections.forEach((section) => observer.unobserve(section));
+      if (observer) {
+        observer.disconnect();
+      }
     };
   }, [location.pathname]);
 
@@ -87,34 +63,36 @@ const Header = () => {
     setIsMenuOpen(false);
   };
 
-const handleLogoClick = () => {
-  closeMenu();
+  const handleLogoClick = () => {
+    closeMenu();
 
-  if (location.pathname === '/') {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-    setActiveSection('forma-obucheniya');
-  } else {
-    navigate('/', { state: { scrollToTop: true } });
-  }
-};
+    if (location.pathname === '/') {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+      setActiveSection('forma-obucheniya');
+    } else {
+      navigate('/', { state: { scrollToTop: true } });
+    }
+  };
 
-const handleNavClick = (id) => {
-  closeMenu();
+  const handleNavClick = (id, e) => {
+    e.preventDefault(); 
+    closeMenu();
 
-  if (location.pathname === '/') {
-    scroller.scrollTo(id, {
-      duration: 600,
-      smooth: 'easeInOutCubic',
-      offset: -90,
-    });
-    setActiveSection(id);
-  } else {
-    navigate('/', { state: { scrollTo: id } });
-  }
-};
+    if (location.pathname === '/') {
+      scroller.scrollTo(id, {
+        duration: 600,
+        smooth: 'easeInOutCubic',
+        offset: -90,
+      });
+      setActiveSection(id);
+    } else {
+      navigate('/', { state: { scrollTo: id } });
+    }
+  };
+
   const navItems = [
     { id: 'forma-obucheniya', label: 'Форма обучения' },
     { id: 'o-nas', label: 'О нас' },
@@ -155,12 +133,13 @@ const handleNavClick = (id) => {
           <ul>
             {navItems.map((item) => (
               <li key={item.id}>
-                <button
+                <a
+                  href={`#${item.id}`}
                   className={`nav-link ${activeSection === item.id ? 'active' : ''}`}
-                  onClick={() => handleNavClick(item.id)}
+                  onClick={(e) => handleNavClick(item.id, e)}
                 >
                   {item.label}
-                </button>
+                </a>
               </li>
             ))}
           </ul>

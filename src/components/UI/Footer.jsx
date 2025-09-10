@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-scroll';
+import { scroller } from 'react-scroll'; // Импортируем scroller
 import '../../styles/UI/footer.css';
 import logo from '../../styles/assets/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -14,6 +14,15 @@ const Footer = () => {
     { id: 'novosti', label: 'Новости' },
     { id: 'kontakty', label: 'Контакты' }
   ];
+
+  const handleScrollClick = (id, e) => {
+    e.preventDefault();
+    scroller.scrollTo(id, {
+      smooth: true,
+      duration: 500,
+      offset: -80,
+    });
+  };
 
   return (
     <footer className="footer">
@@ -39,15 +48,13 @@ const Footer = () => {
           <ul>
             {navItems.map(item => (
               <li key={item.id}>
-                <Link
-                  to={item.id}
-                  smooth={true}
-                  duration={500}
-                  offset={-80}
+                <a
+                  href={`#${item.id}`}
                   className="footer-nav-link"
+                  onClick={(e) => handleScrollClick(item.id, e)}
                 >
                   {item.label}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>
