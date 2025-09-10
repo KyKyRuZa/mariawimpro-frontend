@@ -25,9 +25,9 @@ const WelcomeScreen = () => {
                 offset={-90}
                 duration={500}
             >
-                {/* <button className={`welcome-btn ${isVisible ? 'animate' : ''}`}>
+                <button className={`welcome-btn ${isVisible ? 'animate' : ''}`}>
                     ЗАПИСАТЬСЯ
-                </button> */}
+                </button>
             </Link>
         </div>
     )

@@ -29,7 +29,7 @@ const Footer = () => {
             <a href="https://vk.com/mariaswimpro" target="_blank" rel="noopener noreferrer">
               <FontAwesomeIcon icon={faVk} size="2x" color="white" />
             </a>
-            <a href="https://t.me/mariaswimpro_bot" target="_blank" rel="noopener noreferrer">
+            <a href="https://t.me/swimwithmariaswimpro" target="_blank" rel="noopener noreferrer">
               <FontAwesomeIcon icon={faTelegram} size="2x" color="white" />
             </a>
           </div>
