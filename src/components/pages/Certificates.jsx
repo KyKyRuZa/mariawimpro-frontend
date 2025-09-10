@@ -41,7 +41,7 @@ const Certificates = () => {
             </button>
             <ul className={`certificate-condition ${isInView ? 'animate' : ''}`}>
               <li>Скидка 10%</li>
-              <li>Подарок на день рождения</li>
+              <li>Подарок</li>
             </ul>
           </div>
         </div>
