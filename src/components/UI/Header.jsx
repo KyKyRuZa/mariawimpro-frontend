@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { scroller } from 'react-scroll';
 import '../../styles/UI/header.css';
@@ -9,6 +9,8 @@ const Header = () => {
   const [activeSection, setActiveSection] = useState('forma-obucheniya');
   const navigate = useNavigate();
   const location = useLocation();
+  const menuRef = useRef(null);
+  const burgerRef = useRef(null);
 
   useEffect(() => {
     if (location.pathname !== '/') return;
@@ -52,6 +54,30 @@ const Header = () => {
 
     return () => {
       document.body.classList.remove('menu-open');
+    };
+  }, [isMenuOpen]);
+
+  // Добавляем обработчик клика вне меню
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      // Если меню открыто и клик был вне меню и вне бургер-кнопки
+      if (
+        isMenuOpen &&
+        menuRef.current &&
+        !menuRef.current.contains(event.target) &&
+        burgerRef.current &&
+        !burgerRef.current.contains(event.target)
+      ) {
+        closeMenu();
+      }
+    };
+
+    // Добавляем обработчик при монтировании
+    document.addEventListener('mousedown', handleClickOutside);
+    
+    // Убираем обработчик при размонтировании
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [isMenuOpen]);
 
@@ -119,6 +145,7 @@ const Header = () => {
         </div>
 
         <button
+          ref={burgerRef}
           className={`menu-toggle ${isMenuOpen ? 'active' : ''}`}
           onClick={toggleMenu}
           aria-label={isMenuOpen ? 'Закрыть меню' : 'Открыть меню'}
@@ -129,7 +156,10 @@ const Header = () => {
           <span></span>
         </button>
 
-        <nav className={`header-nav ${isMenuOpen ? 'active' : ''}`}>
+        <nav 
+          ref={menuRef}
+          className={`header-nav ${isMenuOpen ? 'active' : ''}`}
+        >
           <ul>
             {navItems.map((item) => (
               <li key={item.id}>

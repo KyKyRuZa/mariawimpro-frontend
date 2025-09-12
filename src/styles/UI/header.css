@@ -94,7 +94,7 @@
 
 .menu-toggle span {
   transition: all 0.3s ease;
-    background-color: white;
+    background-color: white !important;
     display: block;
     height: 3px;
     margin: 5px auto;
@@ -134,8 +134,7 @@
     position: fixed;
     top: 0;
     right: -100%;
-    width: 90%;
-    max-width: 300px;
+    width: 50%;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.95);
     backdrop-filter: blur(10px);
@@ -143,6 +142,7 @@
     z-index: 999;
     overflow-y: auto;
   }
+
 
   .header-nav.active {
     right: 0;
@@ -162,10 +162,6 @@
     padding: 8px 0;
   }
 
-  .header-nav .nav-link,
-  .header-phone {
-    font-size: 14px;
-  }
 
   /* Анимация бургера */
   .menu-toggle.active span:nth-child(1) {
@@ -218,8 +214,7 @@
     position: fixed;
     top: 0;
     right: -100%;
-    width: 80%;
-    max-width: 320px;
+    width: 30%;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.95);
     backdrop-filter: blur(10px);
@@ -248,7 +243,7 @@
 
   .header-nav .nav-link,
   .header-phone {
-    font-size: 14px;
+    font-size: 20px;
   }
 
   /* Анимация бургера */
