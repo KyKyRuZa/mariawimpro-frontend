@@ -137,7 +137,7 @@ body{
       .welcome-container,
       .certificates-container,
       .attributes-containe{
-        margin: 0px 15px;
+        margin: 0px 15px !important;
       }
       .mapContainer {
         margin: 50px 20px;
