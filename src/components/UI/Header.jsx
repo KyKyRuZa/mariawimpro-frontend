@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { scroller } from 'react-scroll';
 import '../../styles/UI/header.css';
-import logo from '../../styles/assets/logo.png';
+import logo from '../../styles/assets/logo.ico';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
