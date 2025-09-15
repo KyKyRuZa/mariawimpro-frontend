@@ -42,6 +42,9 @@
   transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s;
   will-change: opacity, transform;
 }
+.about-text .indent {
+  text-indent: 48px;
+}
 
 .about-text.animate {
   opacity: 1;
@@ -49,7 +52,7 @@
 }
 
 .about-text p {
-  margin-bottom: 15px;
+  margin-bottom: 22px;
 }
 
 .about-text ul {
@@ -131,12 +134,12 @@
   }
 
   .about-text {
-    font-size: 14px;
+    font-size: 18px;
     transform: translateY(15px);
   }
 
   .about-text ul li {
-    font-size: 13px;
+    font-size: 16px;
   }
 
   .about-image {
@@ -165,12 +168,12 @@
   }
 
   .about-text {
-    font-size: 16px;
+    font-size: 20px;
     transform: translateY(18px);
   }
 
   .about-text ul li {
-    font-size: 15px;
+    font-size: 18px;
   }
 
   .about-image {
@@ -199,7 +202,7 @@
   }
 
   .about-text {
-    font-size: 18px;
+    font-size: 20px;
     line-height: 1.6;
     transform: translateY(20px);
   }

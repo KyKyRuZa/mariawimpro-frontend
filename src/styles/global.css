@@ -28,19 +28,10 @@
   border-radius: 4px;
   margin: 10px 0;
 }
-.training-container, 
-.about-container, 
-.advantage-container, 
-.price-container, 
-.news-container, 
-.reviews-container,
-.mapContainer,
-.coach-info-container,
-.certificates-container,
-.attributes-container{
+
+.coach-info-container{
   margin: 100px 220px;
 }
-
 
 .header-container,
 .footer-container,
@@ -55,7 +46,6 @@
     letter-spacing: 1px;
     margin: 54px 0px;
     line-height: 1.3;
-    
 }
 
 body{

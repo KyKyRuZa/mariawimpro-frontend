@@ -1,7 +1,7 @@
 import React from 'react';
-import { scroller } from 'react-scroll'; // Импортируем scroller
+import { scroller } from 'react-scroll';
 import '../../styles/UI/footer.css';
-import logo from '../../styles/assets/logo.png';
+import logo from '../../styles/assets/logo.ico';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faVk, faTelegram } from '@fortawesome/free-brands-svg-icons';
 
@@ -59,10 +59,27 @@ const Footer = () => {
             ))}
           </ul>
         </nav>
+        <h3 className='tablet'>Контакты</h3>
+        <div className="footer-contact">
+          <h3>Контакты</h3>
+          <div className="contact-info">
+            <p>+7 917 855-53-88</p>
+            <p>+7 917 396-83-10</p>
+            <p>+7 917 899-50-88</p>
+          </div>
+          <div className="contact-address">
+            <p>г. Казань</p>
+            <p>ул. Ибрагимова 54</p>
+            <p>ул. 1 мая д 5</p>
+          </div>
+          <div className="contact-hours">
+            <p>С 7.00-22.00</p>
+            <p>Выходной - воскресенье</p>
+          </div>
+        </div>
       </div>
 
       <div className="footer-copyright">
-        
         <p>© 2025 MARIASWIMPRO. Все права защищены</p>
         <p>Настоящий сайт использует файлы cookie и аналогичные технологии для обеспечения работы сайта, анализа посещаемости и взаимодействия со сторонними сервисами</p>
         <ul className="footer-legal-links">
