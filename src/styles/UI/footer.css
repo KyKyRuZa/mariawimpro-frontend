@@ -38,14 +38,19 @@
   gap: 5px;
 }
 
-.contact-info p,
 .contact-address p,
 .contact-hours p {
   margin: 0;
   font-size: 0.9rem;
   line-height: 1.4;
 }
-
+.contact-info a{
+  text-decoration: underline;
+  margin: 0;
+  color: white;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
 .footer-left {
   display: flex;
   flex-direction: column;

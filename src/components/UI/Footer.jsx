@@ -29,9 +29,9 @@ const Footer = () => {
         <div className="footer-contact">
           <h3>Контакты</h3>
           <div className="contact-info">
-            <p>+7 917 855-53-88</p>
-            <p>+7 917 396-83-10</p>
-            <p>+7 917 899-50-88</p>
+            <a href="tel:+79178555388">+7 917 855-53-88</a>
+            <a href="tel:+79173968310">+7 917 396-83-10</a>
+            <a href="tel:+79178995088">+7 917 899-50-88</a>
           </div>
           <div className="contact-address">
             <p>г. Казань</p>
