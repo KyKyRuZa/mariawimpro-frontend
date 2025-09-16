@@ -1,29 +1,10 @@
 import React from 'react';
-import { scroller } from 'react-scroll';
 import '../../styles/UI/footer.css';
 import logo from '../../styles/assets/logo.ico';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faVk, faTelegram } from '@fortawesome/free-brands-svg-icons';
 
 const Footer = () => {
-  const navItems = [
-    { id: 'forma-obucheniya', label: 'Форма обучения' },
-    { id: 'o-nas', label: 'О нас' },
-    { id: 'trenery', label: 'Тренеры' },
-    { id: 'prays', label: 'Прайс' },
-    { id: 'novosti', label: 'Новости' },
-    { id: 'kontakty', label: 'Контакты' }
-  ];
-
-  const handleScrollClick = (id, e) => {
-    e.preventDefault();
-    scroller.scrollTo(id, {
-      smooth: true,
-      duration: 500,
-      offset: -80,
-    });
-  };
-
   return (
     <footer className="footer">
       <div className="footer-container">
@@ -44,21 +25,6 @@ const Footer = () => {
           </div>
         </div>
 
-        <nav className="footer-nav">
-          <ul>
-            {navItems.map(item => (
-              <li key={item.id}>
-                <a
-                  href={`#${item.id}`}
-                  className="footer-nav-link"
-                  onClick={(e) => handleScrollClick(item.id, e)}
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
         <h3 className='tablet'>Контакты</h3>
         <div className="footer-contact">
           <h3>Контакты</h3>

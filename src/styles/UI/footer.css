@@ -11,13 +11,13 @@
   gap: 50px;
   margin: 0px 220px 50px 220px;
 }
+
 .footer-contact {
   display: flex;
   flex-direction: column;
   gap: 15px;
   color: white;
   margin-bottom: 15px;
-
 }
 
 .footer-contact h3 {
@@ -25,9 +25,11 @@
   font-size: 1.2rem;
   font-weight: bold;
 }
-.tablet{
-    display: none;
+
+.tablet {
+  display: none;
 }
+
 .contact-info,
 .contact-address,
 .contact-hours {
@@ -43,6 +45,7 @@
   font-size: 0.9rem;
   line-height: 1.4;
 }
+
 .footer-left {
   display: flex;
   flex-direction: column;
@@ -87,28 +90,6 @@
   transform: scale(1.1);
 }
 
-.footer-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: row;
-  gap: 15px;
-}
-
-.footer-nav-link {
-  color: white;
-  text-decoration: none;
-  font-size: 22px;
-  transition: color 0.3s;
-  white-space: nowrap;
-  cursor: pointer;
-}
-
-.footer-nav-link:hover {
-  opacity: 0.8;
-}
-
 .footer-copyright {
   text-align: center;
   width: 100%;
@@ -121,6 +102,7 @@
 .footer-copyright p {
   margin: 0;
 }
+
 .footer-legal-links {
   list-style: none;
   padding: 0;
@@ -144,7 +126,6 @@
 .footer-legal-links a:hover {
   color: white;
 }
-
 
 @media (max-width: 480px) {
   .footer {
@@ -184,15 +165,6 @@
     justify-content: center;
   }
 
-  .footer-nav ul {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .footer-nav-link {
-    font-size: 18px;
-  }
-
   .footer-copyright {
     font-size: 0.8rem;
   }
@@ -225,24 +197,17 @@
     display: flex;
     flex-direction: row;
   }
-  .footer-contact h3{
+
+  .footer-contact h3 {
     display: none;
   }
-  .tablet{
+
+  .tablet {
     display: block;
   }
+
   .footer-logo img {
     height: 60px;
-  }
-
-  .footer-nav ul {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px 25px;
-  }
-
-  .footer-nav-link {
-    font-size: 18px;
   }
 
   .footer-copyright {
@@ -264,19 +229,10 @@
     gap: 40px;
   }
 
-  .footer-nav ul {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .footer-nav-link {
-    font-size: 20px;
-  }
-
   .footer-logo img {
     height: 65px;
   }
+
   .footer-contact {
     min-width: 200px;
     text-align: right;
@@ -287,14 +243,6 @@
   .footer-container {
     margin: 0px 220px 50px 220px;
     gap: 50px;
-  }
-
-  .footer-nav ul {
-    gap: 15px;
-  }
-
-  .footer-nav-link {
-    font-size: 22px;
   }
 
   .footer-logo img {
