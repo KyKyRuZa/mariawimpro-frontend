@@ -362,10 +362,8 @@ const AdminCoaches = () => {
                 
                 {fileName && (
                   <div className="file-info" style={{ 
-                    marginTop: '8px', 
                     padding: '8px', 
                     color: 'black',
-                    borderRadius: '4px',
                     fontSize: '14px'
                   }}>
                     <strong>Фото загружено:</strong> {fileName}
