@@ -70,36 +70,47 @@ const AdminGallery = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!selectedCoachId) {
-      alert('Пожалуйста, выберите тренера');
-      return;
-    }
-    if (!editingPhoto && !formData.photo) {
-      alert('Пожалуйста, загрузите фотографию');
-      return;
-    }
-
-    const submitData = new FormData();
-    submitData.append('caption', formData.caption);
-    submitData.append('order', formData.order.toString());
-    if (formData.photo) {
-      submitData.append('photo', formData.photo);
-    }
-
-    try {
-      if (editingPhoto) {
-        await updatePhoto(editingPhoto.id, submitData);
-      } else {
-        await addPhoto(submitData);
+      e.preventDefault();
+      console.log('=== SUBMIT DEBUG ===');
+      console.log('selectedCoachId:', selectedCoachId);
+      console.log('editingPhoto:', editingPhoto);
+      console.log('formData:', formData);
+    
+      if (!selectedCoachId) {
+        alert('Пожалуйста, выберите тренера');
+        return;
       }
-      handleCloseModal();
-    } catch (error) {
-      console.error('Ошибка при сохранении фотографии:', error);
-      alert(`Ошибка: ${error.message}`);
-    }
-  };
-
+      if (!editingPhoto && !formData.photo) {
+        alert('Пожалуйста, загрузите фотографию');
+        return;
+      }
+    
+      const submitData = new FormData();
+      submitData.append('caption', formData.caption);
+      submitData.append('order', formData.order.toString());
+      if (formData.photo) {
+        submitData.append('photo', formData.photo);
+      }
+    
+      // Проверка FormData
+      for (let [key, value] of submitData.entries()) {
+        console.log(`FormData: ${key} =`, value);
+      }
+    
+      try {
+        if (editingPhoto) {
+          console.log('Updating photo:', editingPhoto.id);
+          await updatePhoto(editingPhoto.id, submitData);
+        } else {
+          console.log('Adding new photo for coach:', selectedCoachId);
+          await addPhoto(submitData); // ✅ coachId уже передается через хук
+        }
+        handleCloseModal();
+      } catch (error) {
+        console.error('Ошибка при сохранении фотографии:', error);
+        alert(`Ошибка: ${error.message}`);
+      }
+};
   const handleEdit = (photo) => {
     setEditingPhoto(photo);
     setIsModalOpen(true);
