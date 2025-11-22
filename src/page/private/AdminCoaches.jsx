@@ -17,8 +17,6 @@ const AdminCoaches = () => {
     description: '',
     photo: null
   });
-  const [imagePreview, setImagePreview] = useState(null);
-  const [currentPhotoUrl, setCurrentPhotoUrl] = useState(null);
 
   useEffect(() => {
     if (editingCoach) {
@@ -32,10 +30,6 @@ const AdminCoaches = () => {
         description: editingCoach.description || '',
         photo: null
       });
-      setImagePreview(null);
-      setCurrentPhotoUrl(editingCoach.photo);
-    } else {
-      setCurrentPhotoUrl(null);
     }
   }, [editingCoach]);
 
@@ -51,7 +45,6 @@ const AdminCoaches = () => {
     const file = e.target.files[0];
     
     if (!file) {
-      setImagePreview(null);
       setFormData(prev => ({
         ...prev,
         photo: null
@@ -67,18 +60,10 @@ const AdminCoaches = () => {
 
     try {
       const compressedFile = await compressImage(file);
-      
       setFormData(prev => ({
         ...prev,
         photo: compressedFile
       }));
-      
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImagePreview(reader.result);
-      };
-      reader.readAsDataURL(compressedFile);
-
     } catch (error) {
       console.error('Ошибка обработки файла:', error);
       alert('Ошибка при обработке изображения');
@@ -154,8 +139,6 @@ const AdminCoaches = () => {
         description: '',
         photo: null
       });
-      setImagePreview(null);
-      setCurrentPhotoUrl(null);
     } catch (error) {
       console.error('Ошибка при сохранении тренера:', error);
       alert(`Ошибка при сохранении: ${error.message}`);
@@ -191,18 +174,6 @@ const AdminCoaches = () => {
       description: '',
       photo: null
     });
-    setImagePreview(null);
-    setCurrentPhotoUrl(null);
-  };
-
-  const getPreviewSource = () => {
-    if (imagePreview) {
-      return imagePreview;
-    }
-    if (currentPhotoUrl) {
-      return currentPhotoUrl;
-    }
-    return null;
   };
 
   const truncate = (str, len) => str?.length > len ? `${str.substring(0, len)}...` : str || '';
@@ -381,23 +352,8 @@ const AdminCoaches = () => {
                   required={!editingCoach}
                 />
                 
-                {(getPreviewSource() || currentPhotoUrl) && (
-                  <div className="image-preview">
-                    <p>{imagePreview ? 'Новое фото:' : 'Текущее фото:'}</p>
-                    <img 
-                      src={getPreviewSource()} 
-                      alt="Превью" 
-                      className="preview-thumb"
-                      onError={(e) => {
-                        console.error('Ошибка загрузки изображения');
-                        e.target.style.display = 'none';
-                      }}
-                    />
-                  </div>
-                )}
-                
-                {editingCoach && !imagePreview && (
-                  <p className="help-text">
+                {editingCoach && (
+                  <p className="help-text" style={{ color: 'black' }}>
                     Оставьте поле пустым, чтобы сохранить текущее фото
                   </p>
                 )}
