@@ -17,6 +17,7 @@ const AdminCoaches = () => {
     description: '',
     photo: null
   });
+  const [fileName, setFileName] = useState(''); // ✅ Добавляем для отображения имени файла
 
   useEffect(() => {
     if (editingCoach) {
@@ -30,6 +31,7 @@ const AdminCoaches = () => {
         description: editingCoach.description || '',
         photo: null
       });
+      setFileName(''); // ✅ Сбрасываем имя файла при редактировании
     }
   }, [editingCoach]);
 
@@ -49,12 +51,14 @@ const AdminCoaches = () => {
         ...prev,
         photo: null
       }));
+      setFileName(''); // ✅ Сбрасываем имя файла
       return;
     }
 
     if (file.size > 10 * 1024 * 1024) {
       alert('Файл слишком большой! Максимальный размер: 10MB');
       e.target.value = ''; 
+      setFileName(''); // ✅ Сбрасываем имя файла
       return;
     }
 
@@ -64,9 +68,11 @@ const AdminCoaches = () => {
         ...prev,
         photo: compressedFile
       }));
+      setFileName(file.name); // ✅ Сохраняем имя файла для отображения
     } catch (error) {
       console.error('Ошибка обработки файла:', error);
       alert('Ошибка при обработке изображения');
+      setFileName(''); // ✅ Сбрасываем имя файла при ошибке
     }
   };
 
@@ -139,6 +145,7 @@ const AdminCoaches = () => {
         description: '',
         photo: null
       });
+      setFileName(''); // ✅ Сбрасываем имя файла после сохранения
     } catch (error) {
       console.error('Ошибка при сохранении тренера:', error);
       alert(`Ошибка при сохранении: ${error.message}`);
@@ -174,6 +181,7 @@ const AdminCoaches = () => {
       description: '',
       photo: null
     });
+    setFileName(''); // ✅ Сбрасываем имя файла при закрытии
   };
 
   const truncate = (str, len) => str?.length > len ? `${str.substring(0, len)}...` : str || '';
@@ -352,8 +360,21 @@ const AdminCoaches = () => {
                   required={!editingCoach}
                 />
                 
-                {editingCoach && (
-                  <p className="help-text" style={{ color: 'black' }}>
+                {fileName && (
+                  <div className="file-info" style={{ 
+                    marginTop: '8px', 
+                    padding: '8px', 
+                    backgroundColor: '#f0f8ff', 
+                    border: '1px solid #d1ecf1',
+                    borderRadius: '4px',
+                    fontSize: '14px'
+                  }}>
+                    <strong>✓ Фото загружено:</strong> {fileName}
+                  </div>
+                )}
+                
+                {editingCoach && !fileName && (
+                  <p className="help-text" style={{ color: 'black', marginTop: '8px' }}>
                     Оставьте поле пустым, чтобы сохранить текущее фото
                   </p>
                 )}
