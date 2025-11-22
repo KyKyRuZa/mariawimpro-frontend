@@ -18,6 +18,7 @@ const AdminCoaches = () => {
     photo: null
   });
   const [imagePreview, setImagePreview] = useState(null);
+  const [currentPhotoUrl, setCurrentPhotoUrl] = useState(null);
 
   useEffect(() => {
     if (editingCoach) {
@@ -31,7 +32,10 @@ const AdminCoaches = () => {
         description: editingCoach.description || '',
         photo: null
       });
-      setImagePreview(editingCoach.photo || null);
+      setImagePreview(null);
+      setCurrentPhotoUrl(editingCoach.photo);
+    } else {
+      setCurrentPhotoUrl(null);
     }
   }, [editingCoach]);
 
@@ -44,37 +48,42 @@ const AdminCoaches = () => {
   };
 
   const handleFileChange = async (e) => {
-  const file = e.target.files[0];
-  
-  if (!file) return;
-
-  // Проверка размера файла (10MB limit)
-  if (file.size > 10 * 1024 * 1024) {
-    alert('Файл слишком большой! Максимальный размер: 10MB');
-    e.target.value = ''; // Очистить input
-    return;
-  }
-
-  try {
-    // Сжатие изображения перед загрузкой
-    const compressedFile = await compressImage(file);
+    const file = e.target.files[0];
     
-    setFormData(prev => ({
-      ...prev,
-      photo: compressedFile
-    }));
-    
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setImagePreview(reader.result);
-    };
-    reader.readAsDataURL(compressedFile);
+    if (!file) {
+      setImagePreview(null);
+      setFormData(prev => ({
+        ...prev,
+        photo: null
+      }));
+      return;
+    }
 
-  } catch (error) {
-    console.error('Ошибка обработки файла:', error);
-    alert('Ошибка при обработке изображения');
-  }
-};
+    if (file.size > 10 * 1024 * 1024) {
+      alert('Файл слишком большой! Максимальный размер: 10MB');
+      e.target.value = ''; 
+      return;
+    }
+
+    try {
+      const compressedFile = await compressImage(file);
+      
+      setFormData(prev => ({
+        ...prev,
+        photo: compressedFile
+      }));
+      
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result);
+      };
+      reader.readAsDataURL(compressedFile);
+
+    } catch (error) {
+      console.error('Ошибка обработки файла:', error);
+      alert('Ошибка при обработке изображения');
+    }
+  };
 
   const compressImage = async (file) => {
     const options = {
@@ -86,7 +95,6 @@ const AdminCoaches = () => {
     };
 
     try {
-      // Если файл уже меньше 3MB, не сжимаем
       if (file.size <= 3 * 1024 * 1024) {
         return file;
       }
@@ -104,17 +112,17 @@ const AdminCoaches = () => {
       console.error('Ошибка сжатия:', error);
       return file;
     }
-};
+  };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  
-  if (!editingCoach && !formData.photo) {
-    alert('Пожалуйста, загрузите фотографию тренера');
-    return;
-  }
-  
-  const submitData = new FormData();
+    e.preventDefault();
+    
+    if (!editingCoach && !formData.photo) {
+      alert('Пожалуйста, загрузите фотографию тренера');
+      return;
+    }
+    
+    const submitData = new FormData();
     submitData.append('fullName', formData.fullName);
     submitData.append('education', formData.education);
     submitData.append('specialization', formData.specialization);
@@ -147,6 +155,7 @@ const AdminCoaches = () => {
         photo: null
       });
       setImagePreview(null);
+      setCurrentPhotoUrl(null);
     } catch (error) {
       console.error('Ошибка при сохранении тренера:', error);
       alert(`Ошибка при сохранении: ${error.message}`);
@@ -183,8 +192,21 @@ const AdminCoaches = () => {
       photo: null
     });
     setImagePreview(null);
+    setCurrentPhotoUrl(null);
   };
+
+  const getPreviewSource = () => {
+    if (imagePreview) {
+      return imagePreview;
+    }
+    if (currentPhotoUrl) {
+      return currentPhotoUrl;
+    }
+    return null;
+  };
+
   const truncate = (str, len) => str?.length > len ? `${str.substring(0, len)}...` : str || '';
+  
   if (loading) return <div className="loading">Загрузка...</div>;
   if (error) return <div className="error">Ошибка: {error.message}</div>;
 
@@ -349,7 +371,7 @@ const AdminCoaches = () => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="photo">Фото *</label>
+                <label htmlFor="photo">Фото {!editingCoach && '*'}</label>
                 <input
                   type="file"
                   id="photo"
@@ -358,21 +380,35 @@ const AdminCoaches = () => {
                   accept="image/*"
                   required={!editingCoach}
                 />
-                {imagePreview && (
+                
+                {(getPreviewSource() || currentPhotoUrl) && (
                   <div className="image-preview">
-                    <p>Превью:</p>
+                    <p>{imagePreview ? 'Новое фото:' : 'Текущее фото:'}</p>
                     <img 
-                      src={imagePreview} 
+                      src={getPreviewSource()} 
                       alt="Превью" 
                       className="preview-thumb"
+                      onError={(e) => {
+                        console.error('Ошибка загрузки изображения');
+                        e.target.style.display = 'none';
+                      }}
                     />
                   </div>
+                )}
+                
+                {editingCoach && !imagePreview && (
+                  <p className="help-text">
+                    Оставьте поле пустым, чтобы сохранить текущее фото
+                  </p>
                 )}
               </div>
 
               <div className="form-actions">
                 <button type="submit" className="btn btn-primary">
                   {editingCoach ? 'Сохранить изменения' : 'Добавить тренера'}
+                </button>
+                <button type="button" className="btn btn-secondary" onClick={handleCloseModal}>
+                  Отмена
                 </button>
               </div>
             </form>

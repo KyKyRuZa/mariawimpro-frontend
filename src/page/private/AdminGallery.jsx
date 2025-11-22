@@ -71,11 +71,6 @@ const AdminGallery = () => {
 
   const handleSubmit = async (e) => {
       e.preventDefault();
-      console.log('=== SUBMIT DEBUG ===');
-      console.log('selectedCoachId:', selectedCoachId);
-      console.log('editingPhoto:', editingPhoto);
-      console.log('formData:', formData);
-    
       if (!selectedCoachId) {
         alert('Пожалуйста, выберите тренера');
         return;
@@ -92,7 +87,6 @@ const AdminGallery = () => {
         submitData.append('photo', formData.photo);
       }
     
-      // Проверка FormData
       for (let [key, value] of submitData.entries()) {
         console.log(`FormData: ${key} =`, value);
       }
@@ -103,7 +97,7 @@ const AdminGallery = () => {
           await updatePhoto(editingPhoto.id, submitData);
         } else {
           console.log('Adding new photo for coach:', selectedCoachId);
-          await addPhoto(submitData); // ✅ coachId уже передается через хук
+          await addPhoto(submitData);
         }
         handleCloseModal();
       } catch (error) {
