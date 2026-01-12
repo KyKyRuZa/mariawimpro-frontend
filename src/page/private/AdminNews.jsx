@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNews } from '../../hooks/useNews';
 import '../../styles/admin/AdminCommon.css';
 
@@ -13,18 +13,11 @@ const AdminNews = () => {
     promo: false
   });
 
-  // Мемоизируем данные новостей
-  const newsData = useMemo(() => 
-    Array.isArray(news) ? news : [], 
-    [news]
-  );
-
-  // Загружаем данные только при монтировании
+  const newsData = Array.isArray(news) ? news : [];
   useEffect(() => {
     refresh();
-  }, []); // Пустой массив зависимостей
+  }, [refresh]);
   
-  // Используем useMemo для обработки editingNews
   useEffect(() => {
     if (editingNews) {
       setFormData({
@@ -51,10 +44,7 @@ const AdminNews = () => {
 
   const handleCloseModal = () => {
     setModalOpen(false);
-    // Добавляем задержку для анимации закрытия
-    setTimeout(() => {
-      setEditingNews(null);
-    }, 300);
+    setEditingNews(null);
   };
 
   const handleInputChange = (e) => {
@@ -74,6 +64,7 @@ const AdminNews = () => {
       } else {
         await createNews(formData);
       }
+      await refresh();
       handleCloseModal();
     } catch (error) {
       console.error('Ошибка при сохранении новости:', error);
@@ -84,19 +75,18 @@ const AdminNews = () => {
     if (window.confirm('Вы уверены, что хотите удалить эту новость?')) {
       try {
         await deleteNews(id);
+        await refresh();
       } catch (error) {
         console.error('Ошибка при удалении новости:', error);
       }
     }
   };
-
   const truncate = (str, maxLength) => {
-    if (!str) return '';
-    return str.length > maxLength 
-      ? `${str.substring(0, maxLength)}...` 
-      : str;
-  };
-
+      if (!str) return '';
+      return str.length > maxLength 
+        ? `${str.substring(0, maxLength)}...` 
+        : str;
+    };
   if (loading) return <div className="loading">Загрузка...</div>;
   if (error) return <div className="error">Ошибка: {error.message}</div>;
 
@@ -126,7 +116,7 @@ const AdminNews = () => {
             <tbody>
               {newsData.length === 0 ? (
                 <tr>
-                  <td colSpan="5" className="no-data">Новости отсутствуют</td>
+                  <td colSpan="5" className="no-data">Новости не найдены</td>
                 </tr>
               ) : (
                 newsData.map(item => (
@@ -149,7 +139,7 @@ const AdminNews = () => {
 
           <div className="cards-list" aria-hidden={window.innerWidth >= 425}>
             {newsData.length === 0 ? (
-              <div className="no-data">Новости отсутствуют</div>
+              <div className="no-data">Новости не найдены</div>
             ) : (
               newsData.map(item => (
                 <div key={item.id} className="admin-card">
