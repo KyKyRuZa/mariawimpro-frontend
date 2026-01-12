@@ -115,13 +115,11 @@ const AdminPrices = () => {
     }
   };
 
-  // Сортировка по длительности
   const sortTariffsByDuration = (tariffs) => {
     const order = ['1 тренировка', '4 тренировки', '7 тренировок', '8 тренировок', '10 тренировок'];
     return [...tariffs].sort((a, b) => order.indexOf(a.duration) - order.indexOf(b.duration));
   };
 
-  // Группировка
   const groupedTariffs = tariffsData.reduce((acc, tariff) => {
     if (tariff && tariff.category) {
       if (!acc[tariff.category]) acc[tariff.category] = [];
@@ -168,7 +166,7 @@ const AdminPrices = () => {
 
       <div className="admin-table-container">
         {Object.keys(groupedTariffs).length === 0 ? (
-          <div className="no-data">Тарифы не найдены</div>
+          <div className="no-data">Тарифы отсутствуют</div>
         ) : (
           Object.entries(groupedTariffs).map(([category, categoryTariffs]) => {
             const typeGroups = getGroupedByType(categoryTariffs || []);
@@ -181,7 +179,6 @@ const AdminPrices = () => {
                   <div key={type} className="type-section">
                     <h4 className="type-title">{getTypeLabel(category, type)}</h4>
 
-                    {/* === Таблица (на >425px) === */}
                     <table className="admin-table" aria-hidden={window.innerWidth < 425}>
                       <thead>
                         <tr>
@@ -210,7 +207,6 @@ const AdminPrices = () => {
                       </tbody>
                     </table>
 
-                    {/* === Карточки (на <425px) === */}
                     <div className="cards-list" aria-hidden={window.innerWidth >= 425}>
                       {typeTariffs.map(item => (
                         <div key={item.id} className="admin-card">
