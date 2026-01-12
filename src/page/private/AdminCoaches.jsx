@@ -145,7 +145,7 @@ const AdminCoaches = () => {
         description: '',
         photo: null
       });
-      setFileName(''); 
+      setFileName(''); // ✅ Сбрасываем имя файла после сохранения
     } catch (error) {
       console.error('Ошибка при сохранении тренера:', error);
       alert(`Ошибка при сохранении: ${error.message}`);
@@ -181,7 +181,7 @@ const AdminCoaches = () => {
       description: '',
       photo: null
     });
-    setFileName('');
+    setFileName(''); // ✅ Сбрасываем имя файла при закрытии
   };
 
   const truncate = (str, len) => str?.length > len ? `${str.substring(0, len)}...` : str || '';
