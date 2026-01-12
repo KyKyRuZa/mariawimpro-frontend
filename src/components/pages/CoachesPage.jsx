@@ -29,7 +29,7 @@ const CoachesPage = () => {
                         key={coach.id}
                         coachId={coach.id}
                         text={coach.fullName}
-                        image={`https://mariaswimpro.ru/assets/${coach.photo}`}
+                        image={`https://mariaswimpro.ru/uploads/${coach.photo}`}
                         alt={coach.fullName}
                         isVisible={isInView}
                         delay={index * 100}

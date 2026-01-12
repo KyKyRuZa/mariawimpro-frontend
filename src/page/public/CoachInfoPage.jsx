@@ -78,7 +78,7 @@ const CoachInfoPage = () => {
                         <FontAwesomeIcon icon={faArrowLeft} />
                     </button>
                     <img 
-                        src={`https://mariaswimpro.ru/assets/${coach.photo}`}
+                        src={`https://mariaswimpro.ru/uploads/${coach.photo}`}
                         alt={coach.fullName} 
                         className="coach-avatar" 
                     />
@@ -113,7 +113,7 @@ const CoachInfoPage = () => {
                                     onClick={() => openPhoto(photo)}
                                 >
                                     <img
-                                        src={photo.fullPhotoUrl || `https://mariaswimpro.ru/assets/${photo.photoUrl}`}
+                                        src={photo.fullPhotoUrl || `https://mariaswimpro.ru/uploads/${photo.photoUrl}`}
                                         alt={photo.caption || `Фото ${coach.fullName}`}
                                         className="gallery-image"
                                         data-ratio="auto"
@@ -141,7 +141,7 @@ const CoachInfoPage = () => {
                             ×
                         </button>
                         <img
-                            src={selectedPhoto.fullPhotoUrl || `https://mariaswimpro.ru/assets/${selectedPhoto.photoUrl}`}
+                            src={selectedPhoto.fullPhotoUrl || `https://mariaswimpro.ru/uploads/${selectedPhoto.photoUrl}`}
                             alt={selectedPhoto.caption || `Фото ${coach.fullName}`}
                             className="overlay-image"
                         />
