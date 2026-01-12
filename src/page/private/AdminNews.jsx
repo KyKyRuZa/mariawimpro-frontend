@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNews } from '../../hooks/useNews';
 import '../../styles/admin/AdminCommon.css';
 
@@ -13,10 +13,15 @@ const AdminNews = () => {
     promo: false
   });
 
+  const isInitialMount = useRef(true);
+
   const newsData = Array.isArray(news) ? news : [];
   useEffect(() => {
-    refresh();
-  }, [refresh]);
+    if (isInitialMount.current) {
+      refresh();
+      isInitialMount.current = false;
+    }
+  }, []);
   
   useEffect(() => {
     if (editingNews) {
