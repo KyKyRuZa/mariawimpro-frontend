@@ -113,7 +113,7 @@ const CoachInfoPage = () => {
                                     onClick={() => openPhoto(photo)}
                                 >
                                     <img
-                                        src={photo.fullPhotoUrl || `https://mariaswimpro.ru/uploads/${photo.photoUrl}`}
+                                        src={`https://mariaswimpro.ru/uploads/${photo.photoUrl}`}
                                         alt={photo.caption || `Фото ${coach.fullName}`}
                                         className="gallery-image"
                                         data-ratio="auto"
@@ -141,7 +141,7 @@ const CoachInfoPage = () => {
                             ×
                         </button>
                         <img
-                            src={selectedPhoto.fullPhotoUrl || `https://mariaswimpro.ru/uploads/${selectedPhoto.photoUrl}`}
+                            src={`https://mariaswimpro.ru/uploads/${selectedPhoto.photoUrl}`}
                             alt={selectedPhoto.caption || `Фото ${coach.fullName}`}
                             className="overlay-image"
                         />
