@@ -156,7 +156,7 @@
   }
   
   .coaches-card-image img {
-    height: 400px;
+    height: 500px;
     border-radius: 12px;
   }
 }
@@ -197,7 +197,7 @@
   }
   
   .coaches-card-image img {
-     height: 400px;
+     height: 500px;
     border-radius: 18px;
   }
 }
@@ -215,7 +215,7 @@
   
   .coaches-card-image img {
     width: 305px;
-    height: 400px;
+    height: 500px;
     border-radius: 20px;
   }
 }
