@@ -140,7 +140,7 @@ const Header = () => {
         >
           <img src={logo} alt="MARIASWIMPRO" className="logo" />
           <div>
-            MARIASWIMPRO <br /> prime of life
+            Школа плавания <br />Марии Беляевой
           </div>
         </div>
 

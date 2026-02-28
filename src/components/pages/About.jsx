@@ -14,7 +14,7 @@ const About = () => {
       <div className={`about-content ${isInView ? 'animate' : ''}`}>
         <div className={`about-text ${isInView ? 'animate' : ''}`}>
           <p className="indent">
-            Школа плавания <strong>MARIASWIMPRO</strong> основана в 2020 году группой
+            Школа плавания <strong>Марии Беляевой</strong> основана в 2020 году группой
             бывших профессиональных спортсменов и дипломированных тренеров.
             Мы обучаем как детей, так и взрослых — от новичков до продвинутых пловцов.
           </p>

@@ -12,7 +12,7 @@ const Footer = () => {
           <div className="footer-logo">
             <img src={logo} alt="MARIASWIMPRO" />
             <div className="logo-text">
-              MARIASWIMPRO <br /> <span>prime of life</span>
+              Школа плавания <br />Марии Беляевой
             </div>
           </div>
           <div className="footer-social">

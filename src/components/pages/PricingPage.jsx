@@ -117,7 +117,7 @@ const PricePage = () => {
         />
 
         <PriceCard
-          title="СПЛИТ"
+          title="РАЗДЕЛЬНАЯ ТРЕНЕРОВКА"
           button1="30 мин"
           button2="45 мин"
           priceList1={splitPrices.priceList1}

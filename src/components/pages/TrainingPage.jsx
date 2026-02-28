@@ -29,14 +29,14 @@ const TrainingPage = () => {
         delay={0}
       />
       <FormCard 
-        title="Сплит занятия"
+        title="Раздельная тренировка"
         description={
           <>
             Идеально для двоих: друзья, пара или родственники. Тренер работает с обоими, учитывая цели каждого. Экономично и эффективно.
           </>
         }
         imageUrl={splitImage}
-        altText="Сплит занятия"
+        altText="Раздельная тренировка"
         reverse={true}
         isVisible={isInView}
         delay={200}
