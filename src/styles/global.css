@@ -49,11 +49,11 @@
 }
 
 body{
-  background-image: url(../styles/assets/Background.jpg);
+  background-image: url(./assets/Background.webp);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  overflow-x: hidden; 
+  overflow-x: hidden;
   width: 100%;
   position: relative;
 }

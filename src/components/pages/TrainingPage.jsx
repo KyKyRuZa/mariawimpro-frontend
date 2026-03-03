@@ -1,7 +1,7 @@
 import FormCard from '../card/FormCard';
-import groupImage from '../../styles/assets/group.jpg';
-import splitImage from '../../styles/assets/split.jpg';
-import individualImage from '../../styles/assets/individual.jpg';
+import groupImage from '../../styles/assets/group.webp';
+import splitImage from '../../styles/assets/split.webp';
+import individualImage from '../../styles/assets/individual.webp';
 import useInView from '../../hooks/useInView';
 import '../../styles/formcard.css'
 

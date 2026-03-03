@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
 import MainPage from './page/public/MainPage';
 import CoachInfoPage from './page/public/CoachInfoPage';
-import AdminPanel from './page/private/AdminPanel';
+const AdminPanel = lazy(() => import('./page/private/AdminPanel'));
 import LoginForm from './components/auth/LoginForm';
 import NotFound from './page/public/NotFound';
 import Agreement from './components/pages/Agreement';
@@ -18,7 +19,14 @@ const AppContent = () => {
       <Routes>
         <Route path="/" element={<MainPage />} key={location.pathname} />
         <Route path="/coaches/:coachId" element={<CoachInfoPage />} />
-        <Route path="/admin/*" element={<AdminPanel />} />
+        <Route 
+          path="/admin/*" 
+          element={
+            <Suspense fallback={<div className="admin-panel-loading">Загрузка админки...</div>}>
+              <AdminPanel />
+            </Suspense>
+          } 
+        />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/dogovor-oferty" element={<Agreement />} />
         <Route path="/politika-konfidencialnosti" element={<PolitikaKonfidencialnosti />} />

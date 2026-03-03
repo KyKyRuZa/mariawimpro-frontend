@@ -138,8 +138,8 @@ const Header = () => {
           tabIndex={0}
           aria-label="На главную"
         >
-          <img src={logo} alt="MARIASWIMPRO" className="logo" />
-          <div>
+          <img src={logo} alt=" Школа плавания Марии Беляевой" className="logo" />
+          <div className='logo-text'> 
             Школа плавания <br />Марии Беляевой
           </div>
         </div>

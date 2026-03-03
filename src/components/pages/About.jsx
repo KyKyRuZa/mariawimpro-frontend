@@ -1,5 +1,5 @@
 import "../../styles/about.css";
-import coachImg from "../../styles/assets/maria-avatar.png";
+import coachImg from "../../styles/assets/maria-avatar.webp";
 import useInView from '../../hooks/useInView';
 
 const About = () => {

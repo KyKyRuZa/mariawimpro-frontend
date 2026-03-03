@@ -2,7 +2,7 @@
   background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(15px);
   color: white;
-  height: 175px;
+  height: 171px;
   padding: 40px 0;
   position: sticky !important;
   top: 0;
@@ -14,7 +14,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
 }
 
 .header-logo {
@@ -24,15 +23,16 @@
 }
 
 .header-logo:hover {
-   cursor: pointer;
+  cursor: pointer;
 }
 
+/* Базовые размеры (десктоп) */
 .header-logo .logo {
-  width: 94px;
-  height: 94px;
+  width: 123px;
+  height: 90px;
 }
 
-.header-logo div {
+.header-logo .logo-text {
   margin: 0;
   font-size: 27px;
   font-weight: 500;
@@ -94,31 +94,50 @@
 
 .menu-toggle span {
   transition: all 0.3s ease;
-    background-color: white !important;
-    display: block;
-    height: 3px;
-    margin: 5px auto;
-    width: 25px;
+  background-color: white !important;
+  display: block;
+  height: 3px;
+  margin: 5px auto;
+  width: 25px;
 }
 
+/* --- Большие экраны до 1800px --- */
+@media (max-width: 1800px) {
+  /* Адаптация под прямоугольник */
+  .header-logo .logo {
+    width: 110px;
+    height: 80px;
+  }
+  .header-logo .logo-text {
+    font-size: 22px;
+    line-height: 32px;
+  }
+
+  .header-nav a,
+  .header-phone {
+    font-size: 17px;
+  }
+
+}
+/* --- Мобильные (до 480px) --- */
 @media (max-width: 480px) {
   .header-container {
     padding: 0 16px;
   }
 
   .header {
-    height: 100px;
+    height: 80px;
     padding: 15px 0;
   }
 
   .header-logo .logo {
-    width: 50px;
-    height: 50px;
+    width: 63px;
+    height: 50px; 
   }
-
-  .header-logo div {
-    font-size: 18px !important;
-    line-height: 20px !important;
+  
+  .header-logo .logo-text {
+    font-size: 20px;
+    line-height: 16px;
   }
 
   .menu-toggle {
@@ -143,7 +162,6 @@
     overflow-y: auto;
   }
 
-
   .header-nav.active {
     right: 0;
     display: block;
@@ -162,7 +180,6 @@
     padding: 8px 0;
   }
 
-
   /* Анимация бургера */
   .menu-toggle.active span:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
@@ -178,26 +195,25 @@
     background-color: white;
   }
 
-  /* Запрет скролла при открытом меню */
   body.menu-open {
     overflow: hidden;
   }
 }
 
-/* Мобильные устройства (средние и большие) — от 481px до 768px */
 @media (min-width: 481px) and (max-width: 768px) {
   .header {
-    height: 100px;
+    height: 96px;
     padding: 20px 0;
   }
 
+  /* Адаптация под прямоугольник */
   .header-logo .logo {
-    width: 60px;
-    height: 60px;
+    width: 75px;
+    height: 55px;
   }
 
-  .header-logo div {
-    font-size: 16px;
+  .header-logo .logo-text {
+    font-size: 18px;
     line-height: 28px;
   }
 
@@ -269,19 +285,19 @@
   }
 }
 
-/* Планшеты (альбом) и маленькие ноутбуки — от 769px до 1024px */
 @media (min-width: 769px) and (max-width: 1024px) {
   .header {
     height: 100px;
     padding: 20px 0;
   }
 
+  /* Адаптация под прямоугольник */
   .header-logo .logo {
-    width: 60px;
+    width: 80px;
     height: 60px;
   }
 
-  .header-logo div {
+  .header-logo .logo-text {
     font-size: 16px;
     line-height: 28px;
   }
@@ -291,13 +307,12 @@
     font-size: 14px;
   }
 
-  /* Мобильное меню скрыто — показываем обычное */
   .menu-toggle {
     display: none;
   }
 
   .header-nav {
-    display: flex !important; /* переопределяем, если было active */
+    display: flex !important;
     position: static;
     width: auto;
     max-width: none;
@@ -319,27 +334,27 @@
   }
 }
 
-/* Настольные компьютеры — от 1025px */
+/* --- Ноутбуки 1025px - 1440px --- */
 @media (min-width: 1025px) and (max-width: 1440px) {
-  /* Базовые стили для десктопа (можно вынести в основной CSS) */
   .header {
-    height: 120px;
+    height: 135px;
     padding: 30px 0;
   }
 
+  /* Адаптация под прямоугольник */
   .header-logo .logo {
-    width: 70px;
-    height: 70px;
+    width: 100px;
+    height: 75px;
   }
 
-  .header-logo div {
-    font-size: 18px;
+  .header-logo .logo-text {
+    font-size: 20px;
     line-height: 32px;
   }
 
   .header-nav a,
   .header-phone {
-    font-size: 12px;
+    font-size: 18px;
   }
 
   .menu-toggle {
@@ -361,25 +376,6 @@
   }
 
   .header-nav .nav-link {
-    font-size: 16px;
-  }
-}
-
-@media (max-width: 1800px) {
-  .header-logo .logo {
-    width: 70px;
-    height: 70px;
-  }
-  .header-logo div {
-    font-size: 22px;
-    line-height: 32px;
-  }
-  
-  .header-nav a,
-  .header-phone {
-    font-size: 17px;
-  }
-  .header-container{
-    margin: 0px 100px !important;
+    font-size: 18px;
   }
 }

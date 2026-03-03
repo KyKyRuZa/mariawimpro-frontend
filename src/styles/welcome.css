@@ -109,7 +109,7 @@
     }
 
     .title {
-        font-size: 28px;
+        font-size: 20px;
     }
 
     .subtitle {
@@ -245,30 +245,6 @@
     }
 }
 
-/* 8. Очень маленькие экраны (менее 320px) */
-@media (max-width: 320px) {
-    .slogan {
-        margin: 60px 0 20px 0;
-        transform: translateY(20px);
-    }
-
-    .title {
-        font-size: 24px;
-    }
-
-    .subtitle {
-        font-size: 12px;
-        margin-top: 10px;
-    }
-
-    .welcome-btn {
-        padding: 12px 24px;
-        margin-bottom: 100px;
-        font-size: 14px;
-        transform: translateY(15px);
-        transition: opacity 0.6s ease 0.1s, transform 0.6s ease 0.1s;
-    }
-}
 
 /* 10. Для устройств с тач-скрином (уменьшаем hover-эффекты) */
 @media (hover: none) and (pointer: coarse) {

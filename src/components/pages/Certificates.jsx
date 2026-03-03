@@ -1,5 +1,5 @@
 import '../../styles/gift.css';
-import gift from '../../styles/assets/gift.jpg';
+import gift from '../../styles/assets/gift.webp';
 import useInView from '../../hooks/useInView';
 
 const Certificates = () => {
